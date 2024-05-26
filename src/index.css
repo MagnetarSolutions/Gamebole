@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.trapezoid {
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 100px solid;
+}
+
+.header {
+  label {
+    width: 80px;
+    height: 40px;
+    position: relative;
+    display: block;
+    background: #ebebeb;
+    border-radius: 200px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  label:after {
+    content: "";
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background: #002b65;
+    border-radius: 36px;
+    transition: 0.2s;
+  }
+
+  input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+  }
+
+  input:checked + label:after {
+    left: 78px;
+    transform: translateX(-100%);
+    background: #ff9900;
+  }
+}
+
+.background {
+  width: 20vw;
+  height: 20vh;
+  background: #fff;
+  z-index: -1;
+  position: absolute;
+  transition: 0.2s;
+}
+
+label svg {
+  position: absolute;
+  width: 24px;
+  top: 8px;
+  z-index: 10;
+}
+
+label svg.sun {
+  left: 8px;
+  fill: #fff;
+  transition: 0.2s;
+}
+
+label svg.moon {
+  left: 49px;
+  fill: #7e7e7e;
+  transition: 0.2s;
+}
+
+input:checked + label svg.sun {
+  fill: #7e7e7e;
+}
+
+input:checked + label svg.moon {
+  fill: black;
+}
+
+.card-gradient {
+  background: linear-gradient(
+    to bottom right,
+    rgba(5, 27, 57),
+    rgba(57, 5, 52, 0.42)
+  );
+}
+
+.reviews-gradient {
+  background: linear-gradient(to bottom, #4a6ccae0, #334d94e0);
+}
+
+.logo-gradient {
+  background: linear-gradient(to bottom, #011855, #54005b);
+}
+
+.input-gradient {
+  background: linear-gradient(to right, #3e59a3, #6b7eaf);
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("./resources/fonts/Raleway.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Syne";
+  src: url("./resources/fonts/Syne.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SFUI";
+  src: url("./resources/fonts/SFUI.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@layer utilities {
+  .transition-color {
+    transition-property: color background-color;
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+  }
+}
