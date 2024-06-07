@@ -1,5 +1,6 @@
 import Home from "pages/Home";
 import Blog from "pages/Blog";
+import BlogPixelPerfection from "pages/blogs/BlogPixelPerfection";
 import Header from "components/Header";
 import {
   Routes,
@@ -29,6 +30,10 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/blog" element={<Blog />}></Route>
+            <Route
+              path="/blog/pixel-perfection"
+              element={<BlogPixelPerfection />}
+            ></Route>
           </Routes>
           <Footer />
           <Copyrights />

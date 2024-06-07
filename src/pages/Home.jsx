@@ -3,11 +3,11 @@ import Adepti from "resources/images/Adepti.png";
 import useScreenSize from "hooks/useScreenSize";
 import { SCREEN_SIZES } from "constants/index";
 import CustomButton from "components/CustomButton";
-import Tech from "resources/icons/technologies.svg";
+import Tech from "resources/icons/technologies.png";
 import { useEffect, useRef, useState } from "react";
 import ClientImg1 from "resources/images/client 1.png";
 import ClientImg2 from "resources/images/client 2.jpeg";
-import ClientLogo1 from "resources/logo/client logo 1.svg";
+import ClientLogo1 from "resources/logo/client logo 1.png";
 import ClientLogo2 from "resources/logo/client logo 2.png";
 import FrontSelect from "resources/icons/frontSelect.svg";
 import BackSelect from "resources/icons/backSelect.svg";
@@ -84,7 +84,7 @@ const TechIconScroller = () => {
     return () => timeoutRef.current && clearInterval(timeoutRef.current);
   }, []);
   return (
-    <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 bg-no-repeat bg-cover flex justify-start items-center">
+    <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 bg-no-repeat bg-cover flex justify-start items-center overflow-hidden">
       <img
         className={
           `min-w-[300%] max-h-[60%]` +
@@ -268,31 +268,16 @@ const Home = () => {
   const isMobileScreen = screenSize <= SCREEN_SIZES.md;
 
   return (
-    <div className="home w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden">
-      <Background />
-      <div className="w-full h-[1044px]"></div>
-      {isMobileScreen ? (
-        <div className="h-[500px] flex flex-col justify-center align-middle px-10">
-          <div className="font-syne text-5xl text-[#002B65] mb-5 leading-tight text-center">
-            Welcome to Gamebole
-          </div>
-          <div className="text-md md:text-lg text-[#002B65] font-raleway leading-snug">
-            we don't just undertake game art tasks; we capture the core essence
-            and envision a spectrum of brilliant possibilities for
-            implementation. Our extensive collaboration with industry leaders
-            and an inspired approach pave the way for creating exceptional
-            artworks that transcend the ordinary, defining our commitment to
-            excellence in every project.
-          </div>
-          <div></div>
-        </div>
-      ) : (
-        <div className="mt-12 ml-[10vw] mr-[5vw] h-[714px] flex justify-between align-middle">
-          <div className="w-1/2 flex flex-col justify-center font-bold z-10">
-            <div className="font-syne text-6xl text-[#002B65] mb-5 leading-tight">
+    <div className="home w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden flex justify-center relative z-0">
+      <div className=" max-w-[2000px]">
+        <Background page="home" />
+        <div className="w-full h-[1044px]"></div>
+        {isMobileScreen ? (
+          <div className="h-[500px] flex flex-col justify-center align-middle px-10">
+            <div className="font-syne text-5xl text-[#002B65] mb-5 leading-tight text-center">
               Welcome to Gamebole
             </div>
-            <div className="text-xl text-[#002B65] font-raleway leading-snug mb-8 ">
+            <div className="text-md md:text-lg text-[#002B65] font-raleway leading-snug font-normal">
               we don't just undertake game art tasks; we capture the core
               essence and envision a spectrum of brilliant possibilities for
               implementation. Our extensive collaboration with industry leaders
@@ -300,49 +285,68 @@ const Home = () => {
               artworks that transcend the ordinary, defining our commitment to
               excellence in every project.
             </div>
-            <div className="w-full h-full">
+            <div className="w-full h-full mt-4">
               <CustomButton text="Explore Now" />
             </div>
           </div>
-          <div className="absolute w-3/5 h-[714px] ml-[30%] z-0 flex flex-col align-middle justify-center">
-            <img
-              className=" max-h-[600px] max-w-[1200px]"
-              src={Adepti}
-              alt="Man"
-            />
+        ) : (
+          <div className="mt-12 ml-[10vw] mr-[5vw] h-[714px] flex justify-between align-middle">
+            <div className="w-1/2 flex flex-col justify-center font-bold z-10">
+              <div className="font-syne text-6xl text-[#002B65] mb-5 leading-tight">
+                Welcome to Gamebole
+              </div>
+              <div className="text-xl text-[#002B65] font-raleway leading-snug mb-8 font-normal">
+                we don't just undertake game art tasks; we capture the core
+                essence and envision a spectrum of brilliant possibilities for
+                implementation. Our extensive collaboration with industry
+                leaders and an inspired approach pave the way for creating
+                exceptional artworks that transcend the ordinary, defining our
+                commitment to excellence in every project.
+              </div>
+              <div className="w-full h-full">
+                <CustomButton text="Explore Now" />
+              </div>
+            </div>
+            <div className="absolute w-3/5 h-[714px] ml-[30%] z-0 flex flex-col align-middle justify-center">
+              <img
+                className=" max-h-[600px] max-w-[1200px]"
+                src={Adepti}
+                alt="Man"
+              />
+            </div>
+          </div>
+        )}
+        <div className="flex justify-center text-xl font-raleway text-[#DEA719] font-extrabold">
+          OUR COLLECTION
+        </div>
+        <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] mt-2 mb-6">
+          Gamebole Offers
+        </div>
+        <div className="flex justify-center flex-wrap mb-16 text-[#002B65]">
+          <div className="flex flex-col items-center">
+            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-2xl font-bold">
+              Game Development
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-2xl font-bold">
+              3D Render
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-2xl font-bold">
+              3D Experience
+            </div>
           </div>
         </div>
-      )}
-      <div className="flex justify-center text-xl font-raleway text-[#DEA719] font-extrabold">
-        OUR COLLECTION
+        <TechIconScroller />
+        <ClientReviews />
+        <CoreTeam />
+        <ContactForm />
       </div>
-      <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] mt-2 mb-6">
-        Gamebole Offers
-      </div>
-      <div className="flex justify-center flex-wrap mb-16 text-[#002B65]">
-        <div className="flex flex-col items-center">
-          <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-          <div className="flex justify-center text-2xl font-bold">
-            Game Development
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-          <div className="flex justify-center text-2xl font-bold">
-            3D Render
-          </div>
-        </div>
-        <div className="flex flex-col items-center">
-          <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-          <div className="flex justify-center text-2xl font-bold">
-            3D Experience
-          </div>
-        </div>
-      </div>
-      <TechIconScroller />
-      <ClientReviews />
-      <CoreTeam />
-      <ContactForm />
     </div>
   );
 };
