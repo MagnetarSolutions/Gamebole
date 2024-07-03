@@ -21,6 +21,7 @@ module.exports = {
       profile: "url('resources/backgrounds/Image Backgroung.svg')",
       footerBackground: "url('resources/backgrounds/footer-background.svg')",
       footerStrips: "url('resources/backgrounds/footer-strips.svg')",
+      aiInteractor: "url('resources/backgrounds/AI Interactor Background.png')",
     },
   },
   plugins: [],

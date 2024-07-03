@@ -11,6 +11,7 @@ import {
 import { useLayoutEffect } from "react";
 import Footer from "components/Footer";
 import Copyrights from "components/Copyrights";
+import Services from "pages/Services";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/blog" element={<Blog />}></Route>
+            <Route path="/services" element={<Services />}></Route>
             <Route
               path="/blog/pixel-perfection"
               element={<BlogPixelPerfection />}
