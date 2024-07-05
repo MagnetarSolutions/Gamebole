@@ -15,7 +15,7 @@ const InteractionButton = ({ text, className }) => {
 
 const AiInteractor = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-aiInteractor h-[624px] px-[15%] text-white bg-cover">
+    <div className="flex flex-col justify-center items-center bg-aiInteractor dark:bg-aiInteractorDark h-[624px] px-[15%] text-white bg-cover transition-all duration-1000">
       <div className="font-syne text-5xl font-bold mb-4">AI</div>
       <div className=" font-raleway text-center mb-8">
         Embark on a new era of immersive storytelling with Gamebole's

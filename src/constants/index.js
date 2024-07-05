@@ -8,13 +8,16 @@ import Service1Content3 from "resources/services/1/3.png";
 import Service1Content1Img1 from "resources/services/1/1-1.png";
 import Service1Content1Img2 from "resources/services/1/1-2.png";
 import Service1Content1Btn1 from "resources/services/1/1-b1.svg";
+import Service1Content1Btn1Dark from "resources/services/1/1-b1-dark.svg";
 
 import Service2 from "resources/services/2/main.png";
 import Service2Background from "resources/services/2/background.png";
+import Service2BackgroundDark from "resources/services/2/backgroundDark.png";
 import Service2Content1 from "resources/services/2/1.png";
 import Service2Content2 from "resources/services/2/2.png";
 import Service2Content3 from "resources/services/2/3.png";
 import Service2Content1Btn1 from "resources/services/2/1-b1.svg";
+import Service2Content1Btn1Dark from "resources/services/2/1-b1-dark.svg";
 
 import Service3 from "resources/services/3/main.png";
 import Service3Content1 from "resources/services/3/1.png";
@@ -22,19 +25,23 @@ import Service3Content2 from "resources/services/3/2.png";
 import Service3Content3 from "resources/services/3/3.png";
 import Service3Content1Img1 from "resources/services/3/1-1.png";
 import Service3Content1Btn1 from "resources/services/3/1-b1.svg";
+import Service3Content1Btn1Dark from "resources/services/3/1-b1-dark.svg";
 
 import Service4 from "resources/services/4/main.png";
 import Service4Background from "resources/services/4/background.png";
+import Service4BackgroundDark from "resources/services/4/backgroundDark.png";
 import Service4Content1 from "resources/services/4/1.png";
 import Service4Content2 from "resources/services/4/2.png";
 import Service4Content3 from "resources/services/4/3.png";
 import Service4Content1Btn1 from "resources/services/4/1-b1.svg";
+import Service4Content1Btn1Dark from "resources/services/4/1-b1-dark.svg";
 
 import Service5 from "resources/services/5/main.png";
 import Service5Content1 from "resources/services/5/1.png";
 import Service5Content2 from "resources/services/5/2.png";
 import Service5Content1Img1 from "resources/services/5/1-1.png";
 import Service5Content1Btn1 from "resources/services/1/1-b1.svg";
+import Service5Content1Btn1Dark from "resources/services/1/1-b1-dark.svg";
 
 import Game1 from "resources/games/1.png";
 import Game2 from "resources/games/2.png";
@@ -235,6 +242,7 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service1Content1Btn1,
+            srcDark: Service1Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -258,11 +266,11 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service1Content1Btn1,
+            srcDark: Service1Content1Btn1Dark,
             link: "/",
           },
         ],
       },
-
       {
         logo: Service1Content3,
         title: "Android / IOS",
@@ -282,6 +290,7 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service1Content1Btn1,
+            srcDark: Service1Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -294,6 +303,7 @@ export const servicesData = [
     imgRotation: 22,
     variant: 1,
     background: Service2Background,
+    backgroundDark: Service2BackgroundDark,
     blocks: [
       {
         logo: Service2Content1,
@@ -308,6 +318,7 @@ export const servicesData = [
             type: "button",
             text: "Experience now",
             src: Service2Content1Btn1,
+            srcDark: Service2Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -325,6 +336,7 @@ export const servicesData = [
             type: "button",
             text: "Experience now",
             src: Service2Content1Btn1,
+            srcDark: Service2Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -349,6 +361,7 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service1Content1Btn1,
+            srcDark: Service1Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -376,6 +389,7 @@ export const servicesData = [
             type: "button",
             text: "Experience now",
             src: Service3Content1Btn1,
+            srcDark: Service3Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -394,6 +408,7 @@ export const servicesData = [
             type: "button",
             text: "Experience now",
             src: Service3Content1Btn1,
+            srcDark: Service3Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -412,6 +427,7 @@ export const servicesData = [
             type: "button",
             text: "Experience now",
             src: Service3Content1Btn1,
+            srcDark: Service3Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -424,6 +440,7 @@ export const servicesData = [
     imgRotation: 9,
     variant: 1,
     background: Service4Background,
+    backgroundDark: Service4BackgroundDark,
     blocks: [
       {
         logo: Service4Content1,
@@ -438,6 +455,7 @@ export const servicesData = [
             type: "button",
             text: "See Examples",
             src: Service4Content1Btn1,
+            srcDark: Service4Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -455,6 +473,7 @@ export const servicesData = [
             type: "button",
             text: "See Examples",
             src: Service4Content1Btn1,
+            srcDark: Service4Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -472,6 +491,7 @@ export const servicesData = [
             type: "button",
             text: "See Examples",
             src: Service4Content1Btn1,
+            srcDark: Service4Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -499,6 +519,7 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service5Content1Btn1,
+            srcDark: Service5Content1Btn1Dark,
             link: "/",
           },
         ],
@@ -517,6 +538,7 @@ export const servicesData = [
             type: "button",
             text: "Play now",
             src: Service5Content1Btn1,
+            srcDark: Service5Content1Btn1Dark,
             link: "/",
           },
         ],

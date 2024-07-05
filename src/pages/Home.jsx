@@ -4,7 +4,7 @@ import useScreenSize from "hooks/useScreenSize";
 import { SCREEN_SIZES } from "constants/index";
 import CustomButton from "components/CustomButton";
 import Tech from "resources/icons/technologies.png";
-import { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import ClientImg1 from "resources/images/client 1.png";
 import ClientImg2 from "resources/images/client 2.jpeg";
 import ClientLogo1 from "resources/logo/client logo 1.png";
@@ -19,6 +19,7 @@ import LinkedinLogo from "resources/icons/linkedin.svg";
 import FacebookLogo from "resources/icons/facebook.svg";
 import TwitterLogo from "resources/icons/twitter.svg";
 import ContactForm from "components/ContactForm";
+import { DarkModeContext } from "contexts/DarkModeContext";
 
 const clientData = [
   {
@@ -83,8 +84,9 @@ const TechIconScroller = () => {
     }, 20000);
     return () => timeoutRef.current && clearInterval(timeoutRef.current);
   }, []);
+
   return (
-    <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 bg-no-repeat bg-cover flex justify-start items-center overflow-hidden">
+    <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 dark:bg-backgroundStrip1Dark bg-no-repeat bg-cover flex justify-start items-center overflow-hidden">
       <img
         className={
           `min-w-[300%] max-h-[60%]` +
@@ -100,58 +102,76 @@ const TechIconScroller = () => {
 };
 
 const ClientReviews = () => {
-  const [client, selectClient] = useState(0);
+  const [selectedClient, selectClient] = useState(0);
 
-  const selectNextClient = () => selectClient((client + 1) % clientData.length);
+  const selectNextClient = () =>
+    selectClient((selectedClient + 1) % clientData.length);
   const selectPrevClient = () =>
-    selectClient(client - 1 === -1 ? clientData.length - 1 : client - 1);
+    selectClient(
+      selectedClient - 1 === -1 ? clientData.length - 1 : selectedClient - 1
+    );
 
   return (
-    <div className="w-full flex flex-col items-center">
-      <div className="relative w-4/5 min-w-80 flex flex-col items-center reviews-gradient mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px]">
-        <div className="absolute bottom-0 right-0 mb-4 md:mb-8 mr-4 md:mr-8 flex">
-          <img
-            src={BackSelect}
-            className="mr-2 w-[30px] md:w-auto cursor-pointer"
-            onClick={selectPrevClient}
-            alt={"<-"}
-          />
-          <img
-            src={FrontSelect}
-            className="w-[30px] md:w-auto cursor-pointer"
-            onClick={selectNextClient}
-            alt={"->"}
-          />
-        </div>
-        <div className="font-syne text-xl md:text-3xl text-[#FF9900] mt-2 md:mt-10 mb-2 md:mb-6">
-          Reviews from Our Clients
-        </div>
-        <div className="flex w-11/12">
-          <div className="min-w-[120px] h-[90px] md:min-w-[300px] md:h-[220px] border-4 border-solid border-black rounded-2xl overflow-hidden mr-2 md:mr-14 md:mt-2 md:mb-4">
-            <img
-              src={clientData[client].clientImg}
-              className="w-full h-full"
-              alt="Client Profile"
-            />
-          </div>
-          <div className="text-white">
-            <div className="text-xs md:text-base max-h-16 md:max-h-[170px] overflow-auto overscroll-contain">
-              {clientData[client].clientReview}
-            </div>
-            <div className="mt-2 font-bold italic md:text-2xl">
-              {clientData[client].clientName}
-            </div>
-            <div className="flex justify-between">
-              <div className="w-[60px] h-[40px] md:w-[120px] md:h-[70px] border-black border-2 rounded-md overflow-hidden md:mt-2 md:mb-4">
+    <div className=" h-[328px] md:h-[528px]">
+      <div className="w-full flex flex-col items-center absolute">
+        <div
+          className={`absolute w-4/5 min-w-80
+        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] reviews-gradient max-w-[1500px]`}
+        ></div>
+        <React.Fragment>
+          {clientData.map((client, index) => (
+            <div
+              className={`absolute w-4/5 min-w-80 flex flex-col items-center max-w-[1500px]
+        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] transition-opacity duration-700 ${
+          index !== selectedClient ? "opacity-0" : "opacity-100"
+        }`}
+            >
+              <div className="absolute bottom-0 right-0 mb-4 md:mb-8 mr-4 md:mr-8 flex">
                 <img
-                  src={clientData[client].clientLogo}
-                  className="w-full h-full"
-                  alt="Client Logo"
+                  src={BackSelect}
+                  className="mr-2 w-[30px] md:w-auto cursor-pointer"
+                  onClick={selectPrevClient}
+                  alt={"<-"}
+                />
+                <img
+                  src={FrontSelect}
+                  className="w-[30px] md:w-auto cursor-pointer"
+                  onClick={selectNextClient}
+                  alt={"->"}
                 />
               </div>
+              <div className="font-syne text-xl md:text-3xl text-[#FF9900] mt-2 md:mt-10 mb-2 md:mb-6">
+                Reviews from Our Clients
+              </div>
+              <div className="flex w-11/12">
+                <div className="min-w-[120px] h-[90px] md:min-w-[300px] md:h-[220px] border-4 border-solid border-black rounded-2xl overflow-hidden mr-2 md:mr-14 md:mt-2 md:mb-4">
+                  <img
+                    src={client.clientImg}
+                    className="w-full h-full"
+                    alt="Client Profile"
+                  />
+                </div>
+                <div className="text-white">
+                  <div className="text-xs md:text-base max-h-16 md:max-h-[170px] overflow-auto overscroll-contain">
+                    {client.clientReview}
+                  </div>
+                  <div className="mt-2 font-bold italic md:text-2xl">
+                    {client.clientName}
+                  </div>
+                  <div className="flex justify-between">
+                    <div className="w-[60px] h-[40px] md:w-[120px] md:h-[70px] border-black border-2 rounded-md overflow-hidden md:mt-2 md:mb-4">
+                      <img
+                        src={client.clientLogo}
+                        className="w-full h-full"
+                        alt="Client Logo"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          ))}
+        </React.Fragment>
       </div>
     </div>
   );
@@ -203,8 +223,13 @@ const CoreTeamMember = ({ profile, name, role, links }) => {
 };
 
 const CoreTeam = () => {
+  const [isDarkMode] = useContext(DarkModeContext);
   return (
-    <div className="w-full bg-backgroundStrip2 bg-no-repeat bg-cover flex flex-col items-center py-16">
+    <div
+      className={`w-full ${
+        isDarkMode ? "bg-backgroundStrip2Dark" : "bg-backgroundStrip2"
+      } bg-no-repeat bg-cover flex flex-col items-center py-20 md:py-16`}
+    >
       <div className="text-[#DEA719] text-lg md:text-xl font-bold mt-12 md:mt-14">
         MEET OUR TEAM
       </div>
@@ -238,10 +263,10 @@ const Home = () => {
         <div className="w-full h-[1044px]"></div>
         {isMobileScreen ? (
           <div className="h-[500px] flex flex-col justify-center align-middle px-10">
-            <div className="font-syne text-5xl text-[#002B65] mb-5 leading-tight text-center">
+            <div className="font-syne text-5xl text-[#002B65] dark:text-white mt-10 mb-5 leading-tight text-center">
               Welcome to Gamebole
             </div>
-            <div className="text-md md:text-lg text-[#002B65] font-raleway leading-snug font-normal">
+            <div className="text-md md:text-lg text-[#002B65] dark:text-white font-raleway leading-snug font-normal">
               we don't just undertake game art tasks; we capture the core
               essence and envision a spectrum of brilliant possibilities for
               implementation. Our extensive collaboration with industry leaders
@@ -249,17 +274,17 @@ const Home = () => {
               artworks that transcend the ordinary, defining our commitment to
               excellence in every project.
             </div>
-            <div className="w-full h-full mt-4">
+            <div className="w-full h-full mt-4 flex justify-center md:inline">
               <CustomButton text="Explore Now" />
             </div>
           </div>
         ) : (
           <div className="mt-12 ml-[10vw] mr-[5vw] h-[714px] flex justify-between align-middle">
             <div className="w-1/2 flex flex-col justify-center font-bold z-10">
-              <div className="font-syne text-6xl text-[#002B65] mb-5 leading-tight">
+              <div className="font-syne text-6xl text-[#002B65] dark:text-white mb-5 leading-tight">
                 Welcome to Gamebole
               </div>
-              <div className="text-xl text-[#002B65] font-raleway leading-snug mb-8 font-normal">
+              <div className="text-xl text-[#002B65] dark:text-white font-raleway leading-snug mb-8 font-normal">
                 we don't just undertake game art tasks; we capture the core
                 essence and envision a spectrum of brilliant possibilities for
                 implementation. Our extensive collaboration with industry
@@ -283,25 +308,25 @@ const Home = () => {
         <div className="flex justify-center text-xl font-raleway text-[#DEA719] font-extrabold">
           OUR COLLECTION
         </div>
-        <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] mt-2 mb-6">
+        <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] dark:text-white mt-2 mb-6">
           Gamebole Offers
         </div>
-        <div className="flex justify-center flex-wrap mb-16 text-[#002B65]">
+        <div className="flex justify-center flex-wrap mb-16 text-[#002B65] dark:text-white">
           <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-            <div className="flex justify-center text-2xl font-bold">
+            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-xl md:text-2xl font-bold">
               Game Development
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-            <div className="flex justify-center text-2xl font-bold">
+            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-xl md:text-2xl font-bold">
               3D Render
             </div>
           </div>
           <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-80 h-80 card-gradient m-3"></div>
-            <div className="flex justify-center text-2xl font-bold">
+            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3"></div>
+            <div className="flex justify-center text-xl md:text-2xl font-bold">
               3D Experience
             </div>
           </div>

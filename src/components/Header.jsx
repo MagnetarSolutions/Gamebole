@@ -4,15 +4,18 @@ import ContactIcon from "resources/icons/call.svg";
 import { ReactComponent as Sun } from "resources/icons/sun.svg";
 import { ReactComponent as Moon } from "resources/icons/moon.svg";
 import { ReactComponent as Menu } from "resources/icons/menu.svg";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import useScreenSize from "hooks/useScreenSize";
 import { SCREEN_SIZES } from "constants/index";
 import Sidebar from "./Sidebar";
-import useDarkMode from "hooks/useDarkMode";
+import { DarkModeContext } from "contexts/DarkModeContext";
 
 const Header = () => {
-  const [isDarkMode, setIsDarkMode] = useDarkMode();
+  const [isDarkMode, toggleDarkMode] = useContext(DarkModeContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const [hidden, setHidden] = useState(false);
+  const prevScrollY = useRef(0);
 
   const toggleSidebar = useCallback(
     () => setSidebarOpen(!sidebarOpen),
@@ -20,7 +23,6 @@ const Header = () => {
   );
 
   const screenSize = useScreenSize();
-  console.log(screenSize);
   const isXlScreen = screenSize === SCREEN_SIZES.xl;
   const isLgScreen = screenSize >= SCREEN_SIZES.lg;
   const isSmScreen = screenSize <= SCREEN_SIZES.md;
@@ -29,14 +31,31 @@ const Header = () => {
     if (screenSize > SCREEN_SIZES.md && sidebarOpen) setSidebarOpen(false);
   }, [screenSize, sidebarOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolledDown = window.scrollY > prevScrollY.current;
+      prevScrollY.current = window.scrollY;
+      setHidden(isScrolledDown);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    // add sticky for sticky header
-    <div className="top-0 header">
+    <div
+      className={`${
+        !hidden ? "top-0 opacity-100" : "top-[-90px] opacity-0"
+      } header sticky z-40 transition-all duration-1000`}
+    >
       <Sidebar
         isOpen={sidebarOpen}
         toggleSidebar={toggleSidebar}
         isDarkMode={isDarkMode}
-        toggleDarkMode={setIsDarkMode}
+        toggleDarkMode={toggleDarkMode}
       />
 
       {isSmScreen ? (
@@ -54,7 +73,7 @@ const Header = () => {
       ) : (
         <div className="flex justify-center">
           <div className="absolute w-full max-w-[1140px] trapezoid z-50 text-[#051b39] dark:text-[#351375] transition-color"></div>
-          <div className="absolute w-full max-w-[1140px] px-[50px] h-[100px] flex justify-between text-white items-center z-50">
+          <div className="absolute w-full max-w-[1140px] px-[50px] h-[90px] flex justify-between text-white items-center z-50">
             <div className="flex flex-col justify-center">
               <img
                 src={isLgScreen ? Logo : LogoWithoutText}
@@ -82,7 +101,8 @@ const Header = () => {
               <input
                 type="checkbox"
                 id="darkmode-toggle"
-                onClick={setIsDarkMode}
+                onClick={toggleDarkMode}
+                checked={isDarkMode}
               />
               <label for="darkmode-toggle" className="select-none min-w-20">
                 {isDarkMode ? <Moon /> : <Sun />}

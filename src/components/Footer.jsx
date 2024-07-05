@@ -1,5 +1,6 @@
 import { STRIP_TRIP_DURATION } from "constants";
-import { useEffect, useRef, useState } from "react";
+import { DarkModeContext } from "contexts/DarkModeContext";
+import { useContext, useEffect, useRef, useState } from "react";
 import FooterStrip from "resources/backgrounds/footer-strip.svg";
 import Logo from "resources/logo/logo.png";
 
@@ -23,6 +24,8 @@ const Footer = () => {
   const animationDirectionRef = useRef(animationDirection);
   const intervalRef = useRef(null);
 
+  const [isDarkMode] = useContext(DarkModeContext);
+
   const switchAnimationDirection = () => {
     animationDirectionRef.current = !animationDirectionRef.current;
     setAnimationDirection(animationDirectionRef.current);
@@ -38,8 +41,12 @@ const Footer = () => {
   }, []);
 
   return (
-    <div className="h-[555px] bg-[#B4EAFF] dark:bg-[#110828] flex justify-center items-center">
-      <div className="absolute w-full h-[555px] bg-no-repeat bg-cover bg-footerBackground"></div>
+    <div className="h-[555px] bg-[#B4EAFF] dark:bg-[#110828] flex justify-center items-center transition-all duration-1000">
+      <div
+        className={`absolute w-full h-[555px] bg-no-repeat bg-cover ${
+          isDarkMode ? "bg-footerBackgroundDark" : "bg-footerBackground"
+        }`}
+      ></div>
       <div className="absolute w-full h-[555px] opacity-90 bg-no-repeat bg-cover bg-footerStrips"></div>
       <div className="absolute h-[12vw] opacity-50">
         <img

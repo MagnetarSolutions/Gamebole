@@ -1,7 +1,8 @@
 import { CONTENT_TYPES } from "constants/index";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import CustomButton from "./CustomButton";
 import { BundleCurve } from "react-svg-curve";
+import { DarkModeContext } from "contexts/DarkModeContext";
 
 const ServiceMain = ({ title, image, imgRotation, titleRef, variant }) => {
   return (
@@ -9,8 +10,8 @@ const ServiceMain = ({ title, image, imgRotation, titleRef, variant }) => {
       <div
         ref={titleRef}
         className={`font-syne font-bold text-4xl text-center w-full ${
-          !variant ? "text-[#051B39]" : "text-white"
-        }`}
+          !variant ? "text-[#051B39] dark:text-white" : "text-white"
+        } transition-color duration-1000`}
       >
         {title}
       </div>
@@ -47,21 +48,25 @@ const ServiceSection = ({
   return (
     <div
       ref={serviceRef}
-      className={`rounded border-[3px] border-[#ffffff00] ${
+      className={`rounded-[7px] border-[3px] border-[#ffffff00] ${
         !isSelected
           ? variant
-            ? "hover:border-orange-300"
-            : "hover:border-cyan-300"
-          : ""
+            ? "hover:border-orange-300 dark:hover:border-[#FF9900]"
+            : "hover:border-cyan-300 dark:hover:border-[#FF9900]"
+          : variant
+          ? "border-orange-300 dark:border-[#FF9900]"
+          : "border-cyan-300 dark:border-[#FF9900]"
       } transition-all`}
     >
       <div
         className={`w-28 h-28 flex flex-col justify-around items-center ${
           isSelected
             ? variant
-              ? "service-selector-gradient-B"
-              : "service-selector-gradient-A"
-            : "bg-[#D9D9D9]"
+              ? "service-selector-gradient-B-selected"
+              : "service-selector-gradient-A-selected"
+            : variant
+            ? "service-selector-gradient-B-unselected"
+            : "service-selector-gradient-A-unselected"
         } cursor-pointer rounded`}
         onClick={onClick}
       >
@@ -72,7 +77,7 @@ const ServiceSection = ({
               ? variant
                 ? "text-[#0C4593]"
                 : "text-white"
-              : "text-[#051B39]"
+              : "text-[#051B39] dark:text-[#FF9900]"
           }`}
         >
           {title}
@@ -113,8 +118,8 @@ const ServiceSections = ({
 const ContentTitle = ({ text, variant }) => {
   return (
     <div
-      className={`w-full text-center font-syne font-semibold text-3xl mb-8 ${
-        variant ? "text-[#051B39]" : "text-white"
+      className={`w-full text-center font-syne font-semibold text-3xl mb-8 transition-color duration-1000 ${
+        variant ? "text-[#051B39] dark:text-white" : "text-white"
       }`}
     >
       {text}
@@ -125,8 +130,8 @@ const ContentTitle = ({ text, variant }) => {
 const ContentPara = ({ text, variant }) => {
   return (
     <div
-      className={`w-full mb-5 text-start font-raleway text-lg leading-tight ${
-        variant ? "text-[#222D39]" : "text-white"
+      className={`w-full mb-5 text-start font-raleway text-lg leading-tight transition-color duration-1000 ${
+        variant ? "text-[#222D39] dark:text-white" : "text-white"
       }`}
     >
       {text}
@@ -138,10 +143,16 @@ const ContentImage = ({ src }) => {
   return <img src={src} className="max-w-full h-10 mb-4" />;
 };
 
-const ContentButton = ({ text, src, onClick }) => {
+const ContentButton = ({ text, src, srcDark, onClick }) => {
   return (
     <div className="my-4 w-full flex justify-center relative">
-      <CustomButton text={text} onClick={onClick} icon={src} isSmall />
+      <CustomButton
+        text={text}
+        onClick={onClick}
+        icon={src}
+        iconDark={srcDark}
+        isSmall
+      />
     </div>
   );
 };
@@ -155,7 +166,7 @@ const ServiceContent = ({ content, variant }) => {
     <div className="h-full flex flex-col justify-center mr-6">
       <div
         className={`w-[450px] h-[480px] overflow-y-auto p-7 pr-4 ${
-          variant ? "bg-[#D9D9D9]" : "service-content-gradient"
+          variant ? "service-content-gradient-B" : "service-content-gradient-A"
         }`}
       >
         {content.map((item) => {
@@ -171,6 +182,7 @@ const ServiceContent = ({ content, variant }) => {
                 <ContentButton
                   text={item.text}
                   src={item.src}
+                  srcDark={item.srcDark}
                   onClick={() =>
                     window.open(item.link, "_blank", "noopener,noreferrer")
                   }
@@ -196,6 +208,8 @@ const ServiceData = ({ data }) => {
   const curveRef = useRef(null);
 
   const variant = data.variant;
+
+  const [isDarkMode] = useContext(DarkModeContext);
 
   const adjustCurve = () => {
     if (
@@ -300,12 +314,16 @@ const ServiceData = ({ data }) => {
     return window.removeEventListener("resize", adjustCurve);
   }, [selectedSection]);
 
-  console.log(data.background, "B");
+  const curveColor = variant ? "white" : isDarkMode ? "#FF9900" : "black";
+
   if (!variant)
     return (
       <div
         className="w-full flex justify-center items-center h-[700px] relative"
-        style={{ background: data.background || "" }}
+        style={{
+          background:
+            (isDarkMode ? data.backgroundDark : data.background) || "",
+        }}
       >
         <svg ref={curveRef} className="absolute">
           {curves.map((curve) => (
@@ -313,9 +331,19 @@ const ServiceData = ({ data }) => {
               data={curve.points}
               showPoints={!!curve.showPoints}
               pointElement={([x, y], i) => (
-                <circle cx={x} cy={y} r="5" key={i} />
+                <circle
+                  cx={x}
+                  cy={y}
+                  r="5"
+                  key={i}
+                  stroke={curveColor}
+                  fill={curveColor}
+                  className="transition-color duration-1000"
+                />
               )}
               strokeWidth={1.8}
+              stroke={curveColor}
+              className="transition-color duration-1000"
             />
           ))}
         </svg>
@@ -343,7 +371,9 @@ const ServiceData = ({ data }) => {
     <div
       className="w-full flex justify-center items-center h-[700px] relative"
       style={{
-        backgroundImage: `url(${data.background})`,
+        backgroundImage: `url(${
+          isDarkMode ? data.backgroundDark : data.background
+        })`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
       }}
@@ -359,12 +389,12 @@ const ServiceData = ({ data }) => {
                 cy={y}
                 r="5"
                 key={i}
-                stroke={"white"}
-                fill={"white"}
+                stroke={curveColor}
+                fill={curveColor}
               />
             )}
             strokeWidth={1.8}
-            stroke={curve.color || "white"}
+            stroke={curveColor}
           />
         ))}
       </svg>

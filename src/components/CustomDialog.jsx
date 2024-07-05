@@ -18,7 +18,7 @@ const CustomDialog = ({
             className="w-full flex justify-end cursor-pointer"
             onClick={onClose}
           >
-            <img className="w-4 h-4" src={CloseIcon} alt="close" />
+            <img className="w-5 h-5" src={CloseIcon} alt="close" />
           </div>
         </DialogTitle>
         <DialogContent>{children}</DialogContent>
