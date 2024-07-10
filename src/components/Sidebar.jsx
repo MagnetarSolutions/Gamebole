@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { ReactComponent as Home } from "resources/icons/home.svg";
-import { ReactComponent as Work } from "resources/icons/work.svg";
-import { ReactComponent as Career } from "resources/icons/career.svg";
-import { ReactComponent as About } from "resources/icons/about.svg";
-import { ReactComponent as Contact } from "resources/icons/call.svg";
+import Home from "resources/icons/home.js";
+import Work from "resources/icons/work.js";
+import Career from "resources/icons/career.js";
+import About from "resources/icons/about.js";
+import Contact from "resources/icons/call.js";
 import { ReactComponent as Sun } from "resources/icons/sun 2.svg";
 import { ReactComponent as Moon } from "resources/icons/moon 2.svg";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,9 @@ const SidebarItem = ({ title, icon: Icon, onClick }) => {
       onClick={onClick}
     >
       <Icon className="w-5 h-5 self-center" />
-      <div className="ml-2 text-white">{title}</div>
+      <div className="ml-2 text-white dark:text-[#FF9900] transition-color duration-1000">
+        {title}
+      </div>
     </div>
   );
 };

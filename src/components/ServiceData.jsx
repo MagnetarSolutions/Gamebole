@@ -130,7 +130,7 @@ const ContentTitle = ({ text, variant }) => {
 const ContentPara = ({ text, variant }) => {
   return (
     <div
-      className={`w-full mb-5 text-start font-raleway text-lg leading-tight transition-color duration-1000 ${
+      className={`w-full mb-3 text-start font-raleway text-lg leading-tight transition-color duration-1000 ${
         variant ? "text-[#222D39] dark:text-white" : "text-white"
       }`}
     >
@@ -162,14 +162,30 @@ const ContentError = ({ type }) => {
 };
 
 const ServiceContent = ({ content, variant }) => {
+  const [currentContent, setContent] = useState(null);
+  const [hideContent, setHideContent] = useState(false);
+
+  useEffect(() => {
+    setHideContent(true);
+    setTimeout(() => {
+      setContent(content);
+      setHideContent(false);
+    }, 200);
+  }, [content]);
+
+  if (!currentContent) return null;
   return (
-    <div className="h-full flex flex-col justify-center mr-6">
+    <div
+      className={`h-full flex flex-col justify-center mr-6 ${
+        hideContent ? "scale-x-0" : ""
+      }  transition-all duration-200 ease-linear`}
+    >
       <div
         className={`w-[450px] h-[480px] overflow-y-auto p-7 pr-4 ${
           variant ? "service-content-gradient-B" : "service-content-gradient-A"
         }`}
       >
-        {content.map((item) => {
+        {currentContent.map((item) => {
           switch (item.type) {
             case CONTENT_TYPES.TITLE:
               return <ContentTitle text={item.text} variant={variant} />;
@@ -311,6 +327,7 @@ const ServiceData = ({ data }) => {
       adjustCurve();
       window.addEventListener("resize", adjustCurve);
     }, 10);
+    setTimeout(() => adjustCurve(), 500);
     return window.removeEventListener("resize", adjustCurve);
   }, [selectedSection]);
 
@@ -376,6 +393,7 @@ const ServiceData = ({ data }) => {
         })`,
         backgroundSize: "cover",
         backgroundPosition: "center center",
+        opacity: 0.9,
       }}
     >
       <svg ref={curveRef} className="absolute">

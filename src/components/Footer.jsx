@@ -69,7 +69,7 @@ const Footer = () => {
             game art services."
           </div>
         </div>
-        <div className="flex flex-wrap w-full md:max-w-[50%] justify-around">
+        <div className="flex flex-wrap w-full md:max-w-[50%] justify-start md:justify-around">
           <div>
             <ItemList
               title={"Gamebole"}

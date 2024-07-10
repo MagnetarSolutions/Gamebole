@@ -9,9 +9,10 @@ const CustomDialog = ({
   open = false,
   onClose,
   wrapperClasses = "",
+  disableSideClose = false,
 }) => {
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="lg">
+    <Dialog open={open} onClose={!disableSideClose && onClose} maxWidth="lg">
       <div className={wrapperClasses}>
         <DialogTitle>
           <div

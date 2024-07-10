@@ -5,18 +5,18 @@ import Volume from "resources/logo/volume.svg";
 const InteractionButton = ({ text, className }) => {
   return (
     <div
-      className={`w-[300px] p-[20px] interaction-button-gradient text-white flex justify-between cursor-pointer rounded-lg select-none ${className}`}
+      className={`w-[220] md:w-[300px] p-[10px] md:p-[20px] interaction-button-gradient text-white text-sm flex justify-between items-center cursor-pointer rounded-lg select-none ${className}`}
     >
-      <div>{text}</div>
-      <img src={Volume} alt="volume"></img>
+      <div className="mr-2">{text}</div>
+      <img src={Volume} className="w-4 h-4 md:w-6 md:h-6" alt="volume"></img>
     </div>
   );
 };
 
 const AiInteractor = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-aiInteractor dark:bg-aiInteractorDark h-[624px] px-[15%] text-white bg-cover transition-all duration-1000">
-      <div className="font-syne text-5xl font-bold mb-4">AI</div>
+    <div className="flex flex-col justify-center items-center bg-aiInteractor dark:bg-aiInteractorDark h-[900px] md:h-[624px] px-4 md:px-[15%] text-white bg-cover transition-all duration-1000 max-w-[2000px]">
+      <div className="font-syne text-3xl md:text-5xl font-bold mb-4">AI</div>
       <div className=" font-raleway text-center mb-8">
         Embark on a new era of immersive storytelling with Gamebole's
         cutting-edge AI-based mouth syncing technology. Our expertise in
@@ -30,9 +30,13 @@ const AiInteractor = () => {
         narratives to life with a level of authenticity that transcends
         expectations
       </div>
-      <div className="flex h-[250px] w-full justify-between">
-        <img src={AiBot} className="w-[250px]" alt="Ai bot"></img>
-        <div className="flex">
+      <div className="flex h-[150px] md:h-[250px] w-full justify-between">
+        <img
+          src={AiBot}
+          className="w-[250px] hidden md:inline"
+          alt="Ai bot"
+        ></img>
+        <div className="flex flex-warp:break-word">
           <div className="flex flex-col justify-center">
             <InteractionButton
               text="Welcome to Gamebole AI"

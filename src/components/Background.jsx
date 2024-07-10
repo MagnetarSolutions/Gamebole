@@ -38,13 +38,13 @@ const Background = ({ page = PAGE_TYPES.HOME }) => {
   return (
     <div className="select-none flex justify-center relative -z-50">
       {BACKGROUND[page][BACKGROUND_ELEMENTS.TOP_WHITE_WAVES] && (
-        <div className="absolute w-full h-[1044px] opacity-85 bg-no-repeat bg-cover bg-topWhiteWaves"></div>
+        <div className="absolute w-full h-[600px] md:h-[1044px] opacity-85 bg-no-repeat bg-cover bg-topWhiteWaves"></div>
       )}
       {BACKGROUND[page][BACKGROUND_ELEMENTS.TOP_DARK_WAVES] && (
-        <div className="absolute w-full h-[1044px] bg-no-repeat bg-cover bg-topDarkWaves"></div>
+        <div className="absolute w-full h-[600px] md:h-[1044px] bg-no-repeat bg-cover bg-topDarkWaves"></div>
       )}
       {BACKGROUND[page][BACKGROUND_ELEMENTS.MIDDLE_DARK_WAVES] && (
-        <div className="absolute w-full h-[850px] bg-no-repeat bg-cover bg-middleDarkWaves mt-[1350px]"></div>
+        <div className="absolute w-full h-[850px] md:h-[850px] bg-no-repeat bg-cover bg-middleDarkWaves mt-[1350px]"></div>
       )}
       {BACKGROUND[page][BACKGROUND_ELEMENTS.TOP_CYLINDER] && (
         <div className="absolute h-[62px]">
@@ -70,7 +70,7 @@ const Background = ({ page = PAGE_TYPES.HOME }) => {
         </div>
       )}
       {BACKGROUND[page][BACKGROUND_ELEMENTS.TOP_TRANSITION] && (
-        <div className="absolute w-full h-[1044px] bg-no-repeat bg-cover bg-topTransition"></div>
+        <div className="absolute w-full h-[600px] md:h-[1044px] bg-no-repeat bg-cover bg-topTransition"></div>
       )}
 
       {BACKGROUND[page][BACKGROUND_ELEMENTS.MIDDLE_STRIP_1] && (

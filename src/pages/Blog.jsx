@@ -24,7 +24,7 @@ const Blog = () => {
     <div className="blog w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex justify-center">
       <div className="max-w-[2000px]">
         <Background page="blog" />
-        <div className="w-full h-[500px] md:h-[1044px] flex items-center justify-center relative">
+        <div className="w-full h-[500px] md:h-[700px] flex items-center justify-center relative">
           <div className="mt-28 max-w-[80%] md:max-w-[40%]">
             <div className="font-syne text-2xl md:text-5xl font-bold text-[#051B39] dark:text-white mb-2 md:mb-4">
               GAMEBOLE KNOWLEDGE CENTER
@@ -45,7 +45,7 @@ const Blog = () => {
             alt="laptop"
           ></img>
         </div>
-        <div className="w-full flex justify-center">
+        <div className="w-full flex justify-center mt-[550px] md:mt-[350px]">
           <div className="flex flex-wrap justify-center mt-10 max-w-[1200px]">
             {blogData.map((blogData) => (
               <BlogCard blogData={blogData} extraClasses={"m-[10px]"} />

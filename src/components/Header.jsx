@@ -1,6 +1,6 @@
 import Logo from "resources/logo/logo.png";
 import LogoWithoutText from "resources/logo/logo without text.png";
-import ContactIcon from "resources/icons/call.svg";
+import ContactIcon from "resources/icons/call.js";
 import { ReactComponent as Sun } from "resources/icons/sun.svg";
 import { ReactComponent as Moon } from "resources/icons/moon.svg";
 import { ReactComponent as Menu } from "resources/icons/menu.svg";
@@ -9,6 +9,9 @@ import useScreenSize from "hooks/useScreenSize";
 import { SCREEN_SIZES } from "constants/index";
 import Sidebar from "./Sidebar";
 import { DarkModeContext } from "contexts/DarkModeContext";
+import { Dropdown } from "react-bootstrap";
+import { DropdownButton } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const Header = () => {
   const [isDarkMode, toggleDarkMode] = useContext(DarkModeContext);
@@ -33,7 +36,8 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolledDown = window.scrollY > prevScrollY.current;
+      if (window.scrollY < 500) return setHidden(false);
+      const isScrolledDown = window.scrollY < prevScrollY.current;
       prevScrollY.current = window.scrollY;
       setHidden(isScrolledDown);
     };
@@ -85,18 +89,32 @@ const Header = () => {
               <div className="flex justify-between w-full text-center">
                 <div className="mx-2 font-sfui">HOME</div>
                 <div className="mx-2 font-sfui">ABOUT US</div>
-                <div className="mx-2 font-sfui">OUR WORK</div>
+                <DropdownButton id="dropdown-basic-button" title="OUR WORK">
+                  <Dropdown.Item href="">Game Development</Dropdown.Item>
+                  <Dropdown.Item href="">XR(AR,VR,MR)</Dropdown.Item>
+                  <Dropdown.Item href="">Visualization</Dropdown.Item>
+                  <Dropdown.Item href="">App/Web Development</Dropdown.Item>
+                  <Dropdown.Item href="">SDKs</Dropdown.Item>
+                  <Dropdown.Item href="">AI (Mouth Sync)</Dropdown.Item>
+                </DropdownButton>
                 <div className="mx-2 font-sfui">CAREER</div>
               </div>
             </div>
             <div className="flex">
-              <div className="border-[1px] border-[#D9D9D9] flex text-xl items-center px-4 py-1 rounded-md cursor-pointer mr-4">
-                <img
-                  src={ContactIcon}
-                  alt={""}
+              <div className="border-[1px] border-[#D9D9D9] dark:border-[#FF9900] transition-color duration-1000 flex text-xl items-center px-4 py-1 rounded-md cursor-pointer mr-4">
+                <ContactIcon
                   className={"min-w-5 h-5 " + (isXlScreen ? "mr-2" : "")}
                 />
-                {isXlScreen && <div className="text-sm">Contact Us</div>}
+                {/* <img
+                  src={isDarkMode ? ContactIconDark : ContactIcon}
+                  alt={""}
+                  className={"min-w-5 h-5 " + (isXlScreen ? "mr-2" : "")}
+                /> */}
+                {isXlScreen && (
+                  <div className="text-sm dark:text-[#FF9900] transition-color duration-1000">
+                    Contact Us
+                  </div>
+                )}
               </div>
               <input
                 type="checkbox"

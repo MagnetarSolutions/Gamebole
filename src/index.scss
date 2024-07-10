@@ -133,6 +133,10 @@ input:checked + label svg.moon {
   background: linear-gradient(to bottom, #011855, #54005b);
 }
 
+.logo-gradient:hover {
+  background: linear-gradient(to bottom, #ffffff, #ffffff);
+}
+
 .input-gradient {
   background: linear-gradient(to right, #3e59a3, #6b7eaf);
 }
@@ -181,9 +185,25 @@ input:checked + label svg.moon {
   }
 }
 
-// .service-section-gradient {
-//   background: linear-gradient(to bottom, #011855, #54005b);
-// }
+.service-section-mobile-gradient-A {
+  background: linear-gradient(
+    to bottom,
+    rgba(62, 89, 163, 0.85),
+    rgba(107, 126, 175, 0.85)
+  );
+}
+.service-section-mobile-gradient-B {
+  background: linear-gradient(to bottom, #d2d2d2, #909090);
+}
+
+.dark {
+  .service-section-mobile-gradient-A {
+    background: linear-gradient(to bottom, #351375, #763edf);
+  }
+  .service-section-mobile-gradient-B {
+    background: linear-gradient(to bottom, #351375, #763edf);
+  }
+}
 
 .service-content-gradient-A {
   background: linear-gradient(to bottom, #3d6eb7, #3d84e4);
@@ -237,4 +257,71 @@ input:checked + label svg.moon {
     transition-duration: 0.5s;
     transition-delay: 0.2s;
   }
+}
+
+.dropdown {
+  .btn-primary {
+    background: none;
+    border: none;
+  }
+  .btn-primary:hover {
+    background: none !important;
+  }
+  .btn-primary:focus {
+    background: none !important;
+  }
+  .btn-primary:active {
+    background: none !important;
+  }
+  .btn {
+    padding: 0;
+    font-family: "SFUI";
+  }
+  .btn:checked {
+    background: none !important;
+  }
+  .btn:active {
+    background: none !important;
+  }
+  .btn-check:checked + .btn {
+    background: none !important;
+  }
+  .btn.show {
+    background: none !important;
+  }
+  .btn:first-child:active {
+    background: none !important;
+  }
+  :not(.btn-check) + .btn:active {
+    background: none !important;
+  }
+}
+
+.dropdown-menu {
+  background: linear-gradient(to bottom, #0b2d5a, #0e4695);
+  border-radius: 10px !important;
+  border: none !important;
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+.dark {
+  .dropdown-menu {
+    background: linear-gradient(to bottom, #011855, #54005b);
+  }
+}
+
+.dropdown-item {
+  color: white !important;
+  border-bottom: solid rgba(255, 255, 255, 0.183) 1px !important;
+}
+.dropdown-item:last-child {
+  border-bottom: none !important;
+}
+.dropdown-item:hover {
+  background: none !important;
+  opacity: 0.8;
+}
+.dropdown-item:focus {
+  background: none !important;
 }

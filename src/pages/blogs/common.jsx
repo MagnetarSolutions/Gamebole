@@ -1,6 +1,6 @@
 import TopCap from "resources/blogs/Blog Top Cap.svg";
 import TopCapDark from "resources/blogs/Blog Top Cap Dark.svg";
-import BottomCap from "resources/blogs/Blog Bottom Cap.svg";
+import BottomCap from "resources/blogs/Blog Bottom Cap.js";
 import BottomCapDark from "resources/blogs/Blog Bottom Cap Dark.svg";
 import React, { useContext } from "react";
 import BlogCard from "components/BlogCard";
@@ -37,11 +37,7 @@ export const BlogInfo = ({ coverImg, children }) => {
         <div className="w-4/5 md:w-3/4 bg-[#E0E0E0] dark:bg-[#0E0D3B] transition-all duration-1000 px-2 py-2 md:px-10 md:py-8">
           {children}
         </div>
-        <img
-          src={isDarkMode ? BottomCapDark : BottomCap}
-          alt={"bottom cap"}
-          className="w-4/5 md:w-3/4"
-        />
+        {<BottomCap className={"w-4/5 md:w-3/4"} />}
       </div>
     </React.Fragment>
   );

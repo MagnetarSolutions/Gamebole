@@ -15,9 +15,9 @@ import TeammemberImg1 from "resources/images/teammember 1.png";
 import TeammemberImg2 from "resources/images/teammember 2.png";
 import TeammemberImg3 from "resources/images/teammember 3.png";
 import TeammemberImg4 from "resources/images/teammember 4.png";
-import LinkedinLogo from "resources/icons/linkedin.svg";
-import FacebookLogo from "resources/icons/facebook.svg";
-import TwitterLogo from "resources/icons/twitter.svg";
+import LinkedinLogo from "resources/icons/linkedin.js";
+import FacebookLogo from "resources/icons/facebook.js";
+import TwitterLogo from "resources/icons/twitter.js";
 import ContactForm from "components/ContactForm";
 import { DarkModeContext } from "contexts/DarkModeContext";
 
@@ -181,21 +181,15 @@ const IconGroup = ({ links, height = 38 }) => {
   return (
     <div className="w-full flex justify-center">
       <div className={`w-[152px] h-[38px] flex justify-between`}>
-        <img
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer`}
-          src={LinkedinLogo}
-          alt={"linkedin"}
-        ></img>
-        <img
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer`}
-          src={FacebookLogo}
-          alt={"facebook"}
-        ></img>
-        <img
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer`}
-          src={TwitterLogo}
-          alt={"twitter"}
-        ></img>
+        <LinkedinLogo
+          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+        />
+        <FacebookLogo
+          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+        />
+        <TwitterLogo
+          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+        />
       </div>
     </div>
   );

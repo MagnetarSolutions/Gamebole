@@ -33,8 +33,13 @@ const BlogCard = ({ blogData, extraClasses }) => {
             </div>
           ))}
         </div>
-        <div className="flex cursor-pointer mb-3 select-none text-sm dark:text-white font-light">
-          <div onClick={() => navigate(blogData.link)}>Read More</div>
+        <div className="flex cursor-pointer mb-3 w-24 select-none text-sm dark:text-white font-light group">
+          <div
+            className="hover:underline group-hover:mr-1 transition-all duration-500"
+            onClick={() => navigate(blogData.link)}
+          >
+            Read More
+          </div>
           <img src={RightArrow} alt="arrow" className="w-5"></img>
         </div>
       </div>

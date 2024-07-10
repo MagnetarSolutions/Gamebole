@@ -243,7 +243,10 @@ export const servicesData = [
             text: "Play now",
             src: Service1Content1Btn1,
             srcDark: Service1Content1Btn1Dark,
-            link: "/",
+            link: {
+              type: "popup",
+              value: "h5games",
+            },
           },
         ],
       },

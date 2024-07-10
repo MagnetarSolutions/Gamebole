@@ -18,7 +18,7 @@ import { dummyBlogData } from "constants";
 
 const BlogPixelPerfection = () => {
   return (
-    <div className="blog w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0">
+    <div className="blog w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex justify-center">
       <div className="max-w-[2000px]">
         <Background page="blogExtended" />
         <BlogInfo coverImg={Cover}>

@@ -1,6 +1,6 @@
 import Background from "components/Background";
 import CustomButton from "components/CustomButton";
-import { gamesData, servicesData } from "constants/index";
+import { gamesData, SCREEN_SIZES, servicesData } from "constants/index";
 import TechnologiesWeb from "resources/images/technologies web.png";
 import ServiceData from "components/ServiceData";
 import AiInteractor from "components/AiInteractor";
@@ -8,6 +8,8 @@ import ContactForm from "components/ContactForm";
 import CustomDialog from "components/CustomDialog";
 import { useContext, useState } from "react";
 import { DarkModeContext } from "contexts/DarkModeContext";
+import ServiceDataMobile from "components/ServiceDataMobile";
+import useScreenSize from "hooks/useScreenSize";
 
 const GameCard = ({ gameCardData }) => {
   const { header, title, para, cover, sources } = gameCardData;
@@ -54,20 +56,24 @@ const GameCard = ({ gameCardData }) => {
 };
 
 const Services = () => {
-  const [activeModal, setActiveModal] = useState(true);
+  const [activeModal, setActiveModal] = useState(false);
+
+  const screenSize = useScreenSize();
+
+  const isLgScreen = screenSize >= SCREEN_SIZES.lg;
 
   const [isDarkMode] = useContext(DarkModeContext);
 
   return (
-    <div className="services w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0">
-      <div className="max-w-[2000px]">
+    <div className="services w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex flex-col items-center">
+      <div className="w-full max-w-[2000px]">
         <Background page="services" />
-        <div className="w-full h-[1044px] flex items-center justify-center relative">
-          <div className="max-w-[40%]">
-            <div className="font-syne text-5xl font-bold text-[#051B39] dark:text-white leading-tight mb-2 transition-color duration-1000">
+        <div className="w-full h-[600px] md:h-[1000px] flex items-center justify-center relative">
+          <div className="mt-16 md:mt-0 max-w-[90%] md:max-w-[40%]">
+            <div className="font-syne text-3xl md:text-5xl font-bold text-[#051B39] dark:text-white leading-tight mb-2 transition-color duration-1000">
               Gamebole: Elevating Game Development
             </div>
-            <div className=" font-raleway text-[#051B39] dark:text-white text-lg font-normal leading-normal mb-8 transition-color duration-1000">
+            <div className="font-raleway text-[#051B39] dark:text-white text-base md:text-lg font-normal leading-normal mb-8 transition-color duration-1000">
               Gamebole offers unparalleled game development services tailored to
               bring your vision to life. With a team of seasoned professionals,
               we specialize in custom game engineering and artistry, ensuring
@@ -78,22 +84,27 @@ const Services = () => {
             <CustomButton text="Explore Now"></CustomButton>
           </div>
           <img
-            className="max-w-[40%]"
+            className="max-w-[40%] hidden lg:inline"
             src={TechnologiesWeb}
             alt="tech-web"
           ></img>
         </div>
-        {servicesData.map((service) => (
-          <ServiceData data={service} />
-        ))}
+        {servicesData.map((service) =>
+          isLgScreen ? (
+            <ServiceData data={service} />
+          ) : (
+            <ServiceDataMobile data={service} />
+          )
+        )}
       </div>
       <AiInteractor />
       <ContactForm />
       <CustomDialog
-        open={activeModal}
+        open={activeModal === "h5games"}
         onClose={() => setActiveModal(null)}
         title={"Hello world"}
         wrapperClasses={isDarkMode ? "bg-[#3A177E] dark" : "bg-[#D3E5FE]"}
+        disableSideClose
       >
         <div className=" font-syne text-xl w-full text-center text-[#051B39] dark:text-[#FF9900]">
           H5 Games
