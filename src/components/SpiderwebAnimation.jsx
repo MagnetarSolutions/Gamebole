@@ -32,6 +32,8 @@ const jumps = 100;
 const smallBoxImages = [Box1, Box2, Box3, Box4, Box5, Box6];
 const bigBoxImages = [BigBox1, BigBox2];
 
+const smallBoxTexts = ["VR", "AR", "XR", "MR", "Game", "NR"];
+
 const offsets = [
   [0, -0.5],
   [-0.2, -0.2],
@@ -109,6 +111,7 @@ const calculateState = (i, jump = 0.01) => {
 
 const SpiderwebAnimation = () => {
   const [animationData, setAnimationData] = useState(initialState);
+  const [showSmallBoxTexts, setShowSmallBoxTexts] = useState(false);
 
   useEffect(() => {
     if (animationData.i < 3)
@@ -116,6 +119,10 @@ const SpiderwebAnimation = () => {
         () => setAnimationData(calculateState(animationData.i, 1 / jumps)),
         duration / jumps
       );
+    if (animationData.i >= 1 && animationData.i <= 2 && !showSmallBoxTexts) {
+      setShowSmallBoxTexts(true);
+      setTimeout(() => setShowSmallBoxTexts(false), 5000);
+    }
   }, [animationData]);
 
   const lines = animationData.lines;
@@ -134,7 +141,7 @@ const SpiderwebAnimation = () => {
         className=" object-fill"
       />
       <svg
-        className="absolute z-50"
+        className="absolute z-10 pointer-events-none"
         style={{ width: outersize, height: outersize }}
       >
         {lines.map((line) => (
@@ -155,7 +162,7 @@ const SpiderwebAnimation = () => {
             left: box.pos[1],
             opacity: box.opacity,
           }}
-          className="absolute"
+          className="absolute z-50 cursor-pointer"
         >
           <img
             src={smallBoxImages[index]}
@@ -165,7 +172,13 @@ const SpiderwebAnimation = () => {
               height: ws,
             }}
           />
-          <div className="text-white text-sm"></div>
+          <div
+            className={`text-sm text-center text-black font-medium border border-black dark:!border-gray-400 dark:!text-white ${
+              showSmallBoxTexts ? "opacity-100" : "opacity-0"
+            } transition-all duration-1000 bg-white dark:!bg-[#FF9900] rounded-md bg-opacity-60 mt-1`}
+          >
+            {smallBoxTexts[index]}
+          </div>
         </div>
       ))}
       {bigBoxes.map((box, index) => (
@@ -176,7 +189,7 @@ const SpiderwebAnimation = () => {
             left: box.pos[1],
             opacity: box.opacity,
           }}
-          className="absolute"
+          className="absolute z-50"
         >
           <img
             src={bigBoxImages[index]}
