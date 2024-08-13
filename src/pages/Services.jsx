@@ -10,6 +10,7 @@ import { useContext, useState } from "react";
 import { DarkModeContext } from "contexts/DarkModeContext";
 import ServiceDataMobile from "components/ServiceDataMobile";
 import useScreenSize from "hooks/useScreenSize";
+import SpiderwebAnimation from "components/SpiderwebAnimation";
 
 const GameCard = ({ gameCardData }) => {
   const { header, title, para, cover, sources } = gameCardData;
@@ -68,8 +69,8 @@ const Services = () => {
     <div className="services w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex flex-col items-center">
       <div className="w-full max-w-[2000px]">
         <Background page="services" />
-        <div className="w-full h-[600px] md:h-[1000px] flex items-center justify-center relative">
-          <div className="mt-16 md:mt-0 max-w-[90%] md:max-w-[40%]">
+        <div className="w-full h-[600px] md:h-[720px] flex items-center justify-center relative">
+          <div className="mt-16 md:mt-0 max-w-[90%] lg:max-w-[40%]">
             <div className="font-syne text-3xl md:text-5xl font-bold text-[#051B39] dark:text-white leading-tight mb-2 transition-color duration-1000">
               Gamebole: Elevating Game Development
             </div>
@@ -83,11 +84,7 @@ const Services = () => {
             </div>
             <CustomButton text="Explore Now"></CustomButton>
           </div>
-          <img
-            className="max-w-[40%] hidden lg:inline"
-            src={TechnologiesWeb}
-            alt="tech-web"
-          ></img>
+          <SpiderwebAnimation />
         </div>
         {servicesData.map((service) =>
           isLgScreen ? (

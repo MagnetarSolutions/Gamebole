@@ -181,7 +181,7 @@ const ServiceContent = ({ content, variant }) => {
       }  transition-all duration-200 ease-linear`}
     >
       <div
-        className={`w-[450px] h-[480px] overflow-y-auto p-7 pr-4 ${
+        className={`w-[450px] h-[480px] overflow-y-hidden p-7 pr-4 ${
           variant ? "service-content-gradient-B" : "service-content-gradient-A"
         }`}
       >

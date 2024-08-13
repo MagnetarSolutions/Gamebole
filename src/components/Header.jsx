@@ -37,7 +37,7 @@ const Header = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY < 500) return setHidden(false);
-      const isScrolledDown = window.scrollY < prevScrollY.current;
+      const isScrolledDown = window.scrollY >= prevScrollY.current;
       prevScrollY.current = window.scrollY;
       setHidden(isScrolledDown);
     };

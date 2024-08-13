@@ -20,6 +20,7 @@ import FacebookLogo from "resources/icons/facebook.js";
 import TwitterLogo from "resources/icons/twitter.js";
 import ContactForm from "components/ContactForm";
 import { DarkModeContext } from "contexts/DarkModeContext";
+import SpiderwebAnimation from "components/SpiderwebAnimation";
 
 const clientData = [
   {
@@ -122,7 +123,7 @@ const ClientReviews = () => {
           {clientData.map((client, index) => (
             <div
               className={`absolute w-4/5 min-w-80 flex flex-col items-center max-w-[1500px]
-        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] transition-opacity duration-700 ${
+        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] ease-out transition-opacity duration-500 ${
           index !== selectedClient ? "opacity-0" : "opacity-100"
         }`}
             >
