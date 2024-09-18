@@ -6,9 +6,7 @@ import CustomButton from "components/CustomButton";
 import Tech from "resources/icons/technologies.png";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import ClientImg1 from "resources/images/client 1.png";
-import ClientImg2 from "resources/images/client 2.jpeg";
 import ClientLogo1 from "resources/logo/client logo 1.png";
-import ClientLogo2 from "resources/logo/client logo 2.png";
 import FrontSelect from "resources/icons/frontSelect.svg";
 import BackSelect from "resources/icons/backSelect.svg";
 import TeammemberImg1 from "resources/images/teammember 1.png";
@@ -20,7 +18,6 @@ import FacebookLogo from "resources/icons/facebook.js";
 import TwitterLogo from "resources/icons/twitter.js";
 import ContactForm from "components/ContactForm";
 import { DarkModeContext } from "contexts/DarkModeContext";
-import SpiderwebAnimation from "components/SpiderwebAnimation";
 
 const clientData = [
   {
@@ -31,11 +28,16 @@ const clientData = [
       "Working with Gamebole was a game-changer for us at Stellar Games. As the Chief Creative Officer, I was amazed by their unparalleled expertise in game development and artistry. Gamebole's commitment to excellence, innovative solutions, and seamless collaboration significantly elevated the quality of our projects. They are not just a development studio; they are creative partners who consistently exceed expectations. Gamebole's impact on our gaming portfolio has been nothing short of extraordinary",
   },
   {
-    clientImg: ClientImg2,
-    clientLogo: ClientLogo2,
-    clientName: "Johnny Sins",
-    clientReview:
-      "Made a good game with the help of Sadam, using third mode of payment.",
+    clientImg: ClientImg1,
+    clientLogo: ClientLogo1,
+    clientName: "James Blue",
+    clientReview: "Made a good game with the help of Gamebole...",
+  },
+  {
+    clientImg: ClientImg1,
+    clientLogo: ClientLogo1,
+    clientName: "James White",
+    clientReview: "Made a good game with the help of Gamebole...",
   },
 ];
 

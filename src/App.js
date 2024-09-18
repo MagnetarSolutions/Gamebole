@@ -8,12 +8,13 @@ import {
   BrowserRouter as Router,
   useLocation,
 } from "react-router-dom";
-import { createContext, useContext, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 import Footer from "components/Footer";
 import Copyrights from "components/Copyrights";
 import Services from "pages/Services";
 import useDarkMode from "hooks/useDarkMode";
 import { DarkModeContext } from "contexts/DarkModeContext";
+import Announcement from "components/Announcement";
 
 const Wrapper = ({ children }) => {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Announcement />
       <Router>
         <Wrapper>
           <DarkModeContext.Provider value={[isDarkMode, toggleDarkMode]}>

@@ -218,6 +218,7 @@ export const dummyBlogData = [
 export const servicesData = [
   {
     title: "Game Development",
+    wrapperId: "gameDev",
     mainImg: Service1,
     imgRotation: 9,
     variant: 0,
@@ -302,6 +303,7 @@ export const servicesData = [
   },
   {
     title: "XR",
+    wrapperId: "xr",
     mainImg: Service2,
     imgRotation: 22,
     variant: 1,
@@ -373,6 +375,7 @@ export const servicesData = [
   },
   {
     title: "Visualization",
+    wrapperId: "vr",
     mainImg: Service3,
     imgRotation: 10,
     variant: 0,
@@ -439,6 +442,7 @@ export const servicesData = [
   },
   {
     title: "Web/App Development",
+    wrapperId: "appDev",
     mainImg: Service4,
     imgRotation: 9,
     variant: 1,
@@ -503,6 +507,7 @@ export const servicesData = [
   },
   {
     title: "SDK's",
+    wrapperId: "sdk",
     mainImg: Service5,
     imgRotation: 0,
     variant: 0,

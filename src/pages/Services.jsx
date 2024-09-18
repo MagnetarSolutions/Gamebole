@@ -1,16 +1,16 @@
 import Background from "components/Background";
 import CustomButton from "components/CustomButton";
 import { gamesData, SCREEN_SIZES, servicesData } from "constants/index";
-import TechnologiesWeb from "resources/images/technologies web.png";
 import ServiceData from "components/ServiceData";
 import AiInteractor from "components/AiInteractor";
 import ContactForm from "components/ContactForm";
 import CustomDialog from "components/CustomDialog";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { DarkModeContext } from "contexts/DarkModeContext";
 import ServiceDataMobile from "components/ServiceDataMobile";
 import useScreenSize from "hooks/useScreenSize";
 import SpiderwebAnimation from "components/SpiderwebAnimation";
+import { useLocation } from "react-router-dom";
 
 const GameCard = ({ gameCardData }) => {
   const { header, title, para, cover, sources } = gameCardData;
@@ -64,6 +64,18 @@ const Services = () => {
   const isLgScreen = screenSize >= SCREEN_SIZES.lg;
 
   const [isDarkMode] = useContext(DarkModeContext);
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 0);
+      }
+    }
+  }, [location]);
 
   return (
     <div className="services w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex flex-col items-center">

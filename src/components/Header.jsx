@@ -12,10 +12,13 @@ import { DarkModeContext } from "contexts/DarkModeContext";
 import { Dropdown } from "react-bootstrap";
 import { DropdownButton } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isDarkMode, toggleDarkMode] = useContext(DarkModeContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  const naviage = useNavigate();
 
   const [hidden, setHidden] = useState(false);
   const prevScrollY = useRef(0);
@@ -87,17 +90,37 @@ const Header = () => {
             </div>
             <div className="flex w-full max-w-96 mx-4">
               <div className="flex justify-between w-full text-center">
-                <div className="mx-2 font-sfui">HOME</div>
-                <div className="mx-2 font-sfui">ABOUT US</div>
+                <div
+                  className="mx-2 font-sfui cursor-pointer"
+                  onClick={() => naviage("/")}
+                >
+                  HOME
+                </div>
+                <div
+                  className="mx-2 font-sfui cursor-pointer"
+                  onClick={() => naviage("/blog")}
+                >
+                  Blogs
+                </div>
                 <DropdownButton id="dropdown-basic-button" title="OUR WORK">
-                  <Dropdown.Item href="">Game Development</Dropdown.Item>
-                  <Dropdown.Item href="">XR(AR,VR,MR)</Dropdown.Item>
-                  <Dropdown.Item href="">Visualization</Dropdown.Item>
-                  <Dropdown.Item href="">App/Web Development</Dropdown.Item>
-                  <Dropdown.Item href="">SDKs</Dropdown.Item>
-                  <Dropdown.Item href="">AI (Mouth Sync)</Dropdown.Item>
+                  <Dropdown.Item href="/services#gameDev">
+                    Game Development
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/services#xr">
+                    XR(AR,VR,MR)
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/services#vr">
+                    Visualization
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/services#appDev">
+                    App/Web Development
+                  </Dropdown.Item>
+                  <Dropdown.Item href="/services#sdk">SDKs</Dropdown.Item>
+                  <Dropdown.Item href="/services#ai">
+                    AI (Mouth Sync)
+                  </Dropdown.Item>
                 </DropdownButton>
-                <div className="mx-2 font-sfui">CAREER</div>
+                <div className="mx-2 font-sfui cursor-pointer">CAREER</div>
               </div>
             </div>
             <div className="flex">

@@ -147,6 +147,7 @@ const ServiceDataMobile = ({ data }) => {
   return (
     <div
       className=""
+      id={data.wrapperId}
       style={{
         backgroundImage: `url(${
           isDarkMode ? data.backgroundDark : data.background

@@ -58,27 +58,27 @@ const Sidebar = ({ isOpen, toggleSidebar, isDarkMode, toggleDarkMode }) => {
             <SidebarItem
               title={"Home"}
               icon={Home}
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
             />
             <SidebarItem
-              title={"About us"}
+              title={"Blogs"}
               icon={About}
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/blog")}
             />
             <SidebarItem
               title={"Our Work"}
               icon={Work}
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/services")}
             />
             <SidebarItem
               title={"Career"}
               icon={Career}
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
             />
             <SidebarItem
               title={"Contact"}
               icon={Contact}
-              onClick={() => navigate("/home")}
+              onClick={() => navigate("/")}
             />
           </div>
           <div className="mb-5">

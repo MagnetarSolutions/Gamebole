@@ -337,6 +337,7 @@ const ServiceData = ({ data }) => {
     return (
       <div
         className="w-full flex justify-center items-center h-[700px] relative"
+        id={data.wrapperId}
         style={{
           background:
             (isDarkMode ? data.backgroundDark : data.background) || "",
@@ -387,6 +388,7 @@ const ServiceData = ({ data }) => {
   return (
     <div
       className="w-full flex justify-center items-center h-[700px] relative"
+      id={data.wrapperId}
       style={{
         backgroundImage: `url(${
           isDarkMode ? data.backgroundDark : data.background
