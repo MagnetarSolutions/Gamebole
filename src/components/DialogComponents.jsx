@@ -8,7 +8,7 @@ export const Heading = ({ children }) => {
 
 export const Title = ({ children }) => {
   return (
-    <div className="mx-1 text-xl font-semibold mb-2 dark:text-white">
+    <div className="mx-1 text-xl font-semibold mb-2 dark:text-white underline underline-offset-2">
       {children}
     </div>
   );
