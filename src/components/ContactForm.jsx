@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Mysterio from "resources/images/Mysterio.png";
 import CustomButton from "./CustomButton";
+import emailjs from "emailjs-com";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,27 @@ const ContactForm = () => {
 
   const [errors, setErrors] = useState({});
 
+  const sendEmail = (data) => {
+    if (!data || !data.name || !data.subject || !data.email || !data.message)
+      return;
+    const serviceId = process.env.REACT_APP_SERVICE_ID;
+    const templateId = process.env.REACT_APP_TEMPELATE_ID;
+    const userId = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
+    emailjs
+      .send(serviceId, templateId, data, userId)
+      .then((response) => {
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        console.log("SUCCESS!", response.status, response.text);
+      })
+      .catch((err) => {
+        console.error("FAILED...", err);
+      });
+  };
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -43,6 +65,7 @@ const ContactForm = () => {
       newErrors.message = "Message is required";
     }
 
+    sendEmail();
     return newErrors;
   };
 
@@ -51,8 +74,8 @@ const ContactForm = () => {
     const formErrors = validateForm();
     if (Object.keys(formErrors).length === 0) {
       setErrors({});
-      // Perform the submit action here (e.g., send email or log data)
-      console.log("Form Submitted:", formData);
+      sendEmail(formData);
+      window.alert("Request submitted!");
     } else {
       setErrors(formErrors);
     }
