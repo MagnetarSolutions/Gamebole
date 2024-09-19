@@ -10,18 +10,21 @@ const CustomDialog = ({
   onClose,
   wrapperClasses = "",
   disableSideClose = false,
+  disableCross = false,
 }) => {
   return (
     <Dialog open={open} onClose={!disableSideClose && onClose} maxWidth="lg">
       <div className={wrapperClasses}>
-        <DialogTitle>
-          <div
-            className="w-full flex justify-end cursor-pointer"
-            onClick={onClose}
-          >
-            <img className="w-5 h-5" src={CloseIcon} alt="close" />
-          </div>
-        </DialogTitle>
+        {!disableCross && (
+          <DialogTitle>
+            <div
+              className="w-full flex justify-end cursor-pointer"
+              onClick={onClose}
+            >
+              <img className="w-5 h-5" src={CloseIcon} alt="close" />
+            </div>
+          </DialogTitle>
+        )}
         <DialogContent>{children}</DialogContent>
       </div>
     </Dialog>

@@ -3,6 +3,7 @@ import { DarkModeContext } from "contexts/DarkModeContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import FooterStrip from "resources/backgrounds/footer-strip.svg";
 import Logo from "resources/logo/logo.png";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 const ItemList = ({ title, items }) => {
   return (
