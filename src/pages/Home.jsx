@@ -5,14 +5,14 @@ import { SCREEN_SIZES } from "constants/index";
 import CustomButton from "components/CustomButton";
 import Tech from "resources/icons/technologies.png";
 import React, { useContext, useEffect, useRef, useState } from "react";
-import ClientImg1 from "resources/images/client 1.png";
-import ClientLogo1 from "resources/logo/client logo 1.png";
+import ClientImg1 from "resources/images/Sabrina.jpg";
+import ClientLogo1 from "resources/logo/IntervideoLogo.png";
 import FrontSelect from "resources/icons/frontSelect.svg";
 import BackSelect from "resources/icons/backSelect.svg";
-import TeammemberImg1 from "resources/images/teammember 1.png";
-import TeammemberImg2 from "resources/images/teammember 2.png";
-import TeammemberImg3 from "resources/images/teammember 3.png";
-import TeammemberImg4 from "resources/images/teammember 4.png";
+import TeammemberImg1 from "resources/images/saifImg.jpg";
+import TeammemberImg2 from "resources/images/FaiqPic.png";
+import TeammemberImg3 from "resources/images/ShahzaibPic.jpg";
+import TeammemberImg4 from "resources/images/DP_Furqan.jpg";
 import LinkedinLogo from "resources/icons/linkedin.js";
 import FacebookLogo from "resources/icons/facebook.js";
 import TwitterLogo from "resources/icons/twitter.js";
@@ -23,9 +23,9 @@ const clientData = [
   {
     clientImg: ClientImg1,
     clientLogo: ClientLogo1,
-    clientName: "John Smith",
+    clientName: "Sabrina Grob",
     clientReview:
-      "Working with Gamebole was a game-changer for us at Stellar Games. As the Chief Creative Officer, I was amazed by their unparalleled expertise in game development and artistry. Gamebole's commitment to excellence, innovative solutions, and seamless collaboration significantly elevated the quality of our projects. They are not just a development studio; they are creative partners who consistently exceed expectations. Gamebole's impact on our gaming portfolio has been nothing short of extraordinary",
+      "Very quick response and short processing times, good result, pleasant cooperation. Clear recommendation!",
   },
   {
     clientImg: ClientImg1,
@@ -44,27 +44,27 @@ const clientData = [
 const coreTeamMembers = [
   {
     memberProfile: TeammemberImg1,
-    memberName: "John Smith",
-    memberRole: "Founder and CEO",
-    memberLinks: ["", "", ""],
+    memberName: "Saif Ul Islam",
+    memberRole: "Co-Founder and CEO",
+    memberLinks: ["https://www.linkedin.com/in/saifulislam476/", "", "https://twitter.com/saifi476"],
   },
   {
     memberProfile: TeammemberImg2,
-    memberName: "Wade Warren",
-    memberRole: "Marketing Lead",
-    memberLinks: ["", "", ""],
+    memberName: "Faiq Laiq",
+    memberRole: "Co-Founder and CTO",
+    memberLinks: ["https://www.linkedin.com/in/faiq-laiq-9b039a157/", "", ""],
   },
   {
     memberProfile: TeammemberImg3,
-    memberName: "Adam Spain",
-    memberRole: "Game Designer",
-    memberLinks: ["", "", ""],
+    memberName: "Shahzaib Ansari",
+    memberRole: "Product Lead",
+    memberLinks: ["https://www.linkedin.com/in/shahzaib52?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "", "https://x.com/LostInPixals?t=kY22cs70JXp_mCUPhoU5ug&s=09"],
   },
   {
     memberProfile: TeammemberImg4,
-    memberName: "John Doe",
-    memberRole: "Game Designer",
-    memberLinks: ["", "", ""],
+    memberName: "Furqan Wahid",
+    memberRole: "3d Artist",
+    memberLinks: ["www.linkedin.com/in/furqan-wahid-798baa20a", "", ""],
   },
 ];
 
