@@ -100,9 +100,15 @@ const Services = () => {
         </div>
         {servicesData.map((service) =>
           isLgScreen ? (
-            <ServiceData data={service} />
+            <ServiceData
+              data={service}
+              setActiveModal={(val) => setActiveModal(val)}
+            />
           ) : (
-            <ServiceDataMobile data={service} />
+            <ServiceDataMobile
+              data={service}
+              setActiveModal={(val) => setActiveModal(val)}
+            />
           )
         )}
       </div>
@@ -113,7 +119,6 @@ const Services = () => {
         onClose={() => setActiveModal(null)}
         title={"Hello world"}
         wrapperClasses={isDarkMode ? "bg-[#3A177E] dark" : "bg-[#D3E5FE]"}
-        disableSideClose
       >
         <div className=" font-syne text-xl w-full text-center text-[#051B39] dark:text-[#FF9900]">
           H5 Games

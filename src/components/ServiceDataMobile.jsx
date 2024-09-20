@@ -51,7 +51,7 @@ const ContentError = ({ type }) => {
   <div className="text-red">Unknown type in content: {type}</div>;
 };
 
-const ServiceContent = ({ content, variant, open }) => {
+const ServiceContent = ({ content, variant, open, setActiveModal }) => {
   return (
     <div
       className={`${
@@ -77,9 +77,16 @@ const ServiceContent = ({ content, variant, open }) => {
                   text={item.text}
                   src={item.src}
                   srcDark={item.srcDark}
-                  onClick={() =>
-                    window.open(item.link, "_blank", "noopener,noreferrer")
-                  }
+                  onClick={() => {
+                    if (item.link.type === "popup") {
+                      setActiveModal(item.link.value);
+                    } else
+                      window.open(
+                        item.link.value,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                  }}
                 />
               );
             default:
@@ -92,7 +99,7 @@ const ServiceContent = ({ content, variant, open }) => {
   );
 };
 
-const ServiceSection = ({ title, image, variant, content }) => {
+const ServiceSection = ({ title, image, variant, content, setActiveModal }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -113,7 +120,12 @@ const ServiceSection = ({ title, image, variant, content }) => {
         </div>
         <img src={isOpen ? ArrowDown : ArrowRight} className="w-6 h-6" />
       </div>
-      <ServiceContent content={content} variant={variant} open={isOpen} />
+      <ServiceContent
+        content={content}
+        variant={variant}
+        open={isOpen}
+        setActiveModal={setActiveModal}
+      />
     </div>
   );
 };
@@ -140,7 +152,7 @@ const ServiceSections = ({ services, title, variant }) => {
   );
 };
 
-const ServiceDataMobile = ({ data }) => {
+const ServiceDataMobile = ({ data, setActiveModal }) => {
   const variant = data.variant;
   const [isDarkMode] = useContext(DarkModeContext);
 
@@ -160,6 +172,7 @@ const ServiceDataMobile = ({ data }) => {
         title={data.title}
         services={data.blocks}
         variant={variant}
+        setActiveModal={setActiveModal}
       />
     </div>
   );

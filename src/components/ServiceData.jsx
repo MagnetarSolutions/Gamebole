@@ -161,7 +161,7 @@ const ContentError = ({ type }) => {
   <div className="text-red">Unknown type in content: {type}</div>;
 };
 
-const ServiceContent = ({ content, variant }) => {
+const ServiceContent = ({ content, variant, setActiveModal }) => {
   const [currentContent, setContent] = useState(null);
   const [hideContent, setHideContent] = useState(false);
 
@@ -199,9 +199,16 @@ const ServiceContent = ({ content, variant }) => {
                   text={item.text}
                   src={item.src}
                   srcDark={item.srcDark}
-                  onClick={() =>
-                    window.open(item.link, "_blank", "noopener,noreferrer")
-                  }
+                  onClick={() => {
+                    if (item.link.type === "popup") {
+                      setActiveModal(item.link.value);
+                    } else
+                      window.open(
+                        item.link.value,
+                        "_blank",
+                        "noopener,noreferrer"
+                      );
+                  }}
                 />
               );
             default:
@@ -214,7 +221,7 @@ const ServiceContent = ({ content, variant }) => {
   );
 };
 
-const ServiceData = ({ data }) => {
+const ServiceData = ({ data, setActiveModal }) => {
   const [selectedSection, setSelection] = useState(0);
   const [curves, setCurves] = useState([]);
 
@@ -382,6 +389,7 @@ const ServiceData = ({ data }) => {
         <ServiceContent
           content={data.blocks[selectedSection].content}
           variant={variant}
+          setActiveModal={setActiveModal}
         />
       </div>
     );
