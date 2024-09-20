@@ -67,7 +67,7 @@ const Footer = () => {
           <div>
             Gamebole: A global game development partner that helps developers
             and publishers to build games by providing custom engineering and
-            game art services."
+            game art services.
           </div>
         </div>
         <div className="flex flex-wrap w-full md:max-w-[50%] justify-start md:justify-around">
@@ -99,8 +99,7 @@ const Footer = () => {
             <ItemList
               title={"Phone Numbers"}
               items={[
-                { name: "00 000 0000 0000" },
-                { name: "00 000 0000 0000" },
+                { name: "+92 3034443174" },
               ]}
             />
             <ItemList
