@@ -82,7 +82,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-full my-8">
+    <div className="flex flex-wrap justify-center w-full py-8" id="contact">
       <img
         src={Mysterio}
         className="hidden md:inline mr-8 w-[450px] h-[550px]"

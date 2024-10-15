@@ -18,7 +18,7 @@ const Header = () => {
   const [isDarkMode, toggleDarkMode] = useContext(DarkModeContext);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const naviage = useNavigate();
+  const navigate = useNavigate();
 
   const [hidden, setHidden] = useState(false);
   const prevScrollY = useRef(0);
@@ -92,13 +92,13 @@ const Header = () => {
               <div className="flex justify-between w-full text-center">
                 <div
                   className="mx-2 font-sfui cursor-pointer"
-                  onClick={() => naviage("/")}
+                  onClick={() => navigate("/")}
                 >
                   HOME
                 </div>
                 <div
                   className="mx-2 font-sfui cursor-pointer"
-                  onClick={() => naviage("/blog")}
+                  onClick={() => navigate("/blog")}
                 >
                   Blogs
                 </div>
@@ -124,7 +124,10 @@ const Header = () => {
               </div>
             </div>
             <div className="flex">
-              <div className="border-[1px] border-[#D9D9D9] dark:border-[#FF9900] transition-color duration-1000 flex text-xl items-center px-4 py-1 rounded-md cursor-pointer mr-4">
+              <div
+                className="border-[1px] border-[#D9D9D9] dark:border-[#FF9900] transition-color duration-1000 flex text-xl items-center px-4 py-1 rounded-md cursor-pointer mr-4"
+                onClick={() => navigate("/#contact")}
+              >
                 <ContactIcon
                   className={"min-w-5 h-5 " + (isXlScreen ? "mr-2" : "")}
                 />

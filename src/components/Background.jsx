@@ -3,38 +3,10 @@ import TopCylinder from "resources/backgrounds/bit 1.svg";
 import TopCube from "resources/backgrounds/bit 2.svg";
 import MiddleStrip1 from "resources/backgrounds/Strip 1.svg";
 import MiddleStrip2 from "resources/backgrounds/Strip 2.svg";
-import React, { useEffect, useRef, useState } from "react";
-import {
-  PAGE_TYPES,
-  BACKGROUND_ELEMENTS,
-  BACKGROUND,
-  STRIP_TRIP_DURATION,
-} from "constants/index";
+import React from "react";
+import { PAGE_TYPES, BACKGROUND_ELEMENTS, BACKGROUND } from "constants/index";
 
 const Background = ({ page = PAGE_TYPES.HOME }) => {
-  const [animationDirection, setAnimationDirection] = useState(false);
-  const animationDirectionRef = useRef(animationDirection);
-  const intervalRef = useRef(null);
-
-  const switchAnimationDirection = () => {
-    animationDirectionRef.current = !animationDirectionRef.current;
-    setAnimationDirection(animationDirectionRef.current);
-  };
-
-  useEffect(() => {
-    if (
-      !BACKGROUND[page][BACKGROUND_ELEMENTS.MIDDLE_STRIP_1] &&
-      !BACKGROUND[page][BACKGROUND_ELEMENTS.MIDDLE_STRIP_2]
-    )
-      return;
-    switchAnimationDirection();
-    intervalRef.current = setInterval(
-      switchAnimationDirection,
-      STRIP_TRIP_DURATION
-    );
-    return () => intervalRef.current && clearInterval(intervalRef.current);
-  }, [page]);
-
   return (
     <div className="select-none flex justify-center relative -z-50">
       {BACKGROUND[page][BACKGROUND_ELEMENTS.TOP_WHITE_WAVES] && (
@@ -78,26 +50,16 @@ const Background = ({ page = PAGE_TYPES.HOME }) => {
           <img
             src={MiddleStrip1}
             alt=""
-            className={
-              "object-cover h-full duration-[10000ms] ease-linear " +
-              (!animationDirection
-                ? "ml-[15vw] mt-[1990px]"
-                : "ml-[1vw] mt-[1880px]")
-            }
+            className={"object-cover h-full strip-1-animation"}
           />
         </div>
       )}
       {BACKGROUND[page][BACKGROUND_ELEMENTS.MIDDLE_STRIP_2] && (
-        <div className="absolute h-[10vw]">
+        <div className="absolute h-[10vw] left-0" id="strip-2">
           <img
             src={MiddleStrip2}
             alt=""
-            className={
-              "object-cover h-full duration-[10000ms] ease-linear " +
-              (!animationDirection
-                ? "ml-[80vw] mt-[2786px]"
-                : "ml-[50vw] mt-[3100px]")
-            }
+            className={"object-cover h-full strip-2-animation"}
           />
         </div>
       )}

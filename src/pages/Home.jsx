@@ -18,6 +18,7 @@ import FacebookLogo from "resources/icons/facebook.js";
 import TwitterLogo from "resources/icons/twitter.js";
 import ContactForm from "components/ContactForm";
 import { DarkModeContext } from "contexts/DarkModeContext";
+import { useLocation, useParams } from "react-router-dom";
 
 const clientData = [
   {
@@ -46,7 +47,11 @@ const coreTeamMembers = [
     memberProfile: TeammemberImg1,
     memberName: "Saif Ul Islam",
     memberRole: "Co-Founder and CEO",
-    memberLinks: ["https://www.linkedin.com/in/saifulislam476/", "", "https://twitter.com/saifi476"],
+    memberLinks: [
+      "https://www.linkedin.com/in/saifulislam476/",
+      "",
+      "https://twitter.com/saifi476",
+    ],
   },
   {
     memberProfile: TeammemberImg2,
@@ -58,7 +63,11 @@ const coreTeamMembers = [
     memberProfile: TeammemberImg3,
     memberName: "Shahzaib Ansari",
     memberRole: "Product Lead",
-    memberLinks: ["https://www.linkedin.com/in/shahzaib52?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", "", "https://x.com/LostInPixals?t=kY22cs70JXp_mCUPhoU5ug&s=09"],
+    memberLinks: [
+      "https://www.linkedin.com/in/shahzaib52?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      "",
+      "https://x.com/LostInPixals?t=kY22cs70JXp_mCUPhoU5ug&s=09",
+    ],
   },
   {
     memberProfile: TeammemberImg4,
@@ -119,7 +128,7 @@ const ClientReviews = () => {
       <div className="w-full flex flex-col items-center absolute">
         <div
           className={`absolute w-4/5 min-w-80
-        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] reviews-gradient max-w-[1500px]`}
+        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] reviews-gradient opacity-70 max-w-[1500px]`}
         ></div>
         <React.Fragment>
           {clientData.map((client, index) => (
@@ -150,7 +159,7 @@ const ClientReviews = () => {
                 <div className="min-w-[120px] h-[90px] md:min-w-[300px] md:h-[220px] border-4 border-solid border-black rounded-2xl overflow-hidden mr-2 md:mr-14 md:mt-2 md:mb-4">
                   <img
                     src={client.clientImg}
-                    className="w-full h-full"
+                    className="w-full h-full object-contain bg-gray-200"
                     alt="Client Profile"
                   />
                 </div>
@@ -162,10 +171,10 @@ const ClientReviews = () => {
                     {client.clientName}
                   </div>
                   <div className="flex justify-between">
-                    <div className="w-[60px] h-[40px] md:w-[120px] md:h-[70px] border-black border-2 rounded-md overflow-hidden md:mt-2 md:mb-4">
+                    <div className="w-[120px] md:w-[200px] p-2 border-black border-2 rounded-md overflow-hidden md:mt-2 md:mb-4">
                       <img
                         src={client.clientLogo}
-                        className="w-full h-full"
+                        className="w-full"
                         alt="Client Logo"
                       />
                     </div>
@@ -183,16 +192,28 @@ const ClientReviews = () => {
 const IconGroup = ({ links, height = 38 }) => {
   return (
     <div className="w-full flex justify-center">
-      <div className={`w-[152px] h-[38px] flex justify-between`}>
-        <LinkedinLogo
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
-        />
-        <FacebookLogo
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
-        />
-        <TwitterLogo
-          className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
-        />
+      <div className={`w-[152px] h-[38px] flex justify-center gap-[10%]`}>
+        {links[0] && (
+          <a href={links[0]} target="_black">
+            <LinkedinLogo
+              className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+            />
+          </a>
+        )}
+        {links[1] && (
+          <a href={links[1]} target="_black">
+            <FacebookLogo
+              className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+            />
+          </a>
+        )}
+        {links[2] && (
+          <a href={links[2]} target="_black">
+            <TwitterLogo
+              className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`}
+            />
+          </a>
+        )}
       </div>
     </div>
   );
@@ -204,7 +225,7 @@ const CoreTeamMember = ({ profile, name, role, links }) => {
       <div className="w-44 h-44 bg-profile bg-no-repeat bg-contain flex justify-center items-center">
         <img
           src={profile}
-          className="w-40 h-40 rounded-full"
+          className="w-40 h-40 rounded-full object-cover"
           alt={"profile"}
         ></img>
       </div>
@@ -252,6 +273,17 @@ const CoreTeam = () => {
 const Home = () => {
   const screenSize = useScreenSize();
   const isMobileScreen = screenSize <= SCREEN_SIZES.md;
+  const location = useLocation();
+
+  useEffect(() => {
+    const hash = location.hash;
+    if (hash) {
+      const element = document.querySelector(hash);
+      if (element) {
+        setTimeout(() => element.scrollIntoView({ behavior: "smooth" }), 0);
+      }
+    }
+  }, [location]);
 
   return (
     <div className="home w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden flex justify-center relative z-0">

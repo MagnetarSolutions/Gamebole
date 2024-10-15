@@ -1,4 +1,3 @@
-import { STRIP_TRIP_DURATION } from "constants";
 import { DarkModeContext } from "contexts/DarkModeContext";
 import { useContext, useEffect, useRef, useState } from "react";
 import FooterStrip from "resources/backgrounds/footer-strip.svg";
@@ -21,25 +20,7 @@ const ItemList = ({ title, items }) => {
 };
 
 const Footer = () => {
-  const [animationDirection, setAnimationDirection] = useState(false);
-  const animationDirectionRef = useRef(animationDirection);
-  const intervalRef = useRef(null);
-
   const [isDarkMode] = useContext(DarkModeContext);
-
-  const switchAnimationDirection = () => {
-    animationDirectionRef.current = !animationDirectionRef.current;
-    setAnimationDirection(animationDirectionRef.current);
-  };
-
-  useEffect(() => {
-    switchAnimationDirection();
-    intervalRef.current = setInterval(
-      switchAnimationDirection,
-      STRIP_TRIP_DURATION
-    );
-    return () => intervalRef.current && clearInterval(intervalRef.current);
-  }, []);
 
   return (
     <div className="h-[555px] bg-[#B4EAFF] dark:bg-[#110828] flex justify-center items-center transition-all duration-1000">
@@ -49,16 +30,11 @@ const Footer = () => {
         }`}
       ></div>
       <div className="absolute w-full h-[555px] opacity-90 bg-no-repeat bg-cover bg-footerStrips"></div>
-      <div className="absolute h-[12vw] opacity-50">
+      <div className="absolute h-[12vw] opacity-50 left-0" id="strip-3">
         <img
           src={FooterStrip}
           alt=""
-          className={
-            "object-cover h-full duration-[10000ms] ease-linear " +
-            (!animationDirection
-              ? "ml-[85vw] mt-[0px]"
-              : "ml-[70vw] mt-[200px]")
-          }
+          className={"object-cover h-full strip-3-animation"}
         />
       </div>
       <div className="absolute flex flex-wrap w-full justify-around text-white">
@@ -98,9 +74,7 @@ const Footer = () => {
           <div>
             <ItemList
               title={"Phone Numbers"}
-              items={[
-                { name: "+92 3034443174" },
-              ]}
+              items={[{ name: "+92 3034443174" }]}
             />
             <ItemList
               title={"Find Us"}

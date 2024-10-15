@@ -1,10 +1,12 @@
 import { useState } from "react";
 import PrivacyPolicy from "./PrivacyPolicy";
 import TermsAndConditions from "./TermsAndConditions";
+import { useNavigate } from "react-router-dom";
 
 const Dot = () => <div className="mx-4 cursor-default select-none">.</div>;
 
 const Copyrights = () => {
+  const navigate = useNavigate();
   const [activeModal, setActiveModal] = useState(null);
 
   const onModalClose = () => setActiveModal(null);
@@ -33,7 +35,10 @@ const Copyrights = () => {
           Terms & Conditions
         </div>
         <Dot />
-        <div className="text-center underline cursor-pointer hover:text-blue-600">
+        <div
+          className="text-center underline cursor-pointer hover:text-blue-600"
+          onClick={() => navigate("/#contact")}
+        >
           Contact Us
         </div>
       </div>

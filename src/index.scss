@@ -315,13 +315,88 @@ input:checked + label svg.moon {
   color: white !important;
   border-bottom: solid rgba(255, 255, 255, 0.183) 1px !important;
 }
+
 .dropdown-item:last-child {
   border-bottom: none !important;
 }
+
 .dropdown-item:hover {
   background: none !important;
   opacity: 0.8;
 }
+
 .dropdown-item:focus {
   background: none !important;
+}
+
+@keyframes move1 {
+  0% {
+    transform: translate(15vw, 1990px);
+  }
+  50% {
+    transform: translate(1vw, 1880px);
+  }
+  100% {
+    transform: translate(15vw, 1990px);
+  }
+}
+
+.strip-1-animation {
+  animation: move1 500s linear infinite;
+  object-fit: cover;
+  height: 100%;
+}
+
+@keyframes move2 {
+  0% {
+    transform: translate(80vw, 2786px);
+  }
+  50% {
+    transform: translate(50vw, 3100px);
+  }
+  100% {
+    transform: translate(80vw, 2786px);
+  }
+}
+
+.strip-2-animation {
+  animation: move2 500s linear infinite;
+  object-fit: cover;
+  height: 100%;
+}
+
+@keyframes move3 {
+  0% {
+    transform: translate(85vw, 0px);
+  }
+  50% {
+    transform: translate(70vw, 200px);
+  }
+  100% {
+    transform: translate(85vw, 0px);
+  }
+}
+
+.strip-3-animation {
+  animation: move3 500s linear infinite;
+  object-fit: cover;
+  height: 100%;
+}
+
+/* For WebKit browsers */
+::-webkit-scrollbar {
+  width: 8px; /* Thin scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #029ddf; /* Light grey background for the track */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4515a4; /* Dark blue for the scrollbar thumb */
+  border-radius: 10px; /* Rounded edges */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2b0b5f; /* Slightly darker blue on hover */
 }

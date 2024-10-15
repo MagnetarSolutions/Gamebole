@@ -64,8 +64,6 @@ export const SCREEN_SIZES = {
   xl: 3,
 };
 
-export const STRIP_TRIP_DURATION = 10 * 1000; //10 seconds
-
 export const PAGE_TYPES = {
   HOME: "home",
   BLOG: "blog",
@@ -561,9 +559,7 @@ export const gamesData = [
     title: "Bowling 3d",
     para: "Play our bowling 3d games with new challenges and adventures",
     cover: Game1,
-    sources: [
-      { icon: Game2Logo1, link: "" },
-    ],
+    sources: [{ icon: Game2Logo1, link: "" }],
   },
   {
     header: "Pool Merge Io",
@@ -584,9 +580,6 @@ export const gamesData = [
     title: "Mr Bean World Tour",
     para: "Dive into the adrenaline-pumping action of Mr Bean. Unleash your shooting skills as you navigate through dynamic levels, blasting colorful balls to bits. With each level presenting escalating challenges, 'Ball Blast' offers an addictive and visually vibrant gaming experience",
     cover: Game4,
-    sources: [
-      { icon: Game2Logo1, link: "" },
-    
-    ],
+    sources: [{ icon: Game2Logo1, link: "" }],
   },
 ];
