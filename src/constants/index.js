@@ -43,9 +43,9 @@ import Service5Content1Img1 from "resources/services/5/1-1.png";
 import Service5Content1Btn1 from "resources/services/1/1-b1.svg";
 import Service5Content1Btn1Dark from "resources/services/1/1-b1-dark.svg";
 
-import Game1 from "resources/games/1.png";
-import Game2 from "resources/games/2.png";
-import Game3 from "resources/games/3.png";
+import Game1 from "resources/games/800x800.jpg";
+import Game2 from "resources/games/PoolMergeImage.png";
+import Game3 from "resources/games/tap_away.png";
 import Game4 from "resources/games/4.png";
 
 import Game1Logo1 from "resources/games/logo 1-1.svg";
@@ -557,39 +557,36 @@ export const servicesData = [
 
 export const gamesData = [
   {
-    header: "BRAINDOM2",
-    title: "BRAINDOM2: Who is Lying?",
-    para: "Braindom 2 is unlike most IQ games, brain games, and riddle games because it has a unique concept that lets you work your brain out. Tricky puzzles and brain games will elevate your IQ because it tricks and challenges your thinking habits in a funny and ludic way.",
+    header: "Bowling 3d",
+    title: "Bowling 3d",
+    para: "Play our bowling 3d games with new challenges and adventures",
     cover: Game1,
     sources: [
-      { icon: Game1Logo1, link: "" },
-      { icon: Game1Logo2, link: "" },
-      { icon: Game1Logo3, link: "" },
+      { icon: Game2Logo1, link: "" },
     ],
   },
   {
-    header: "Bus Parking 3D",
-    title: "Bus Parking 3D",
-    para: "Embark on a thrilling challenge with Gamebole's 'Bus Parking 3D' on PlayCanvas. Maneuver your bus through intricate levels, collecting coins while mastering the art of precision parking within the allotted time. This simple yet engaging game combines skill and strategy for an immersive experience, offering players a chance to showcase their driving prowess in a visually captivating environmen",
+    header: "Pool Merge Io",
+    title: "Pool Merge Io",
+    para: "Pool Merge Io being made as a inhouse product is a 3d merge game where bigger pool balls eat smaller ones and become bigger",
     cover: Game2,
     sources: [{ icon: Game2Logo1, link: "" }],
   },
   {
-    header: "Teeth Runner",
-    title: "Teeth Runner",
-    para: "Embark on a whimsical adventure with 'Teeth Runner,' a delightful creation by Gamebole on Crazy Games. Navigate through a charming world filled with dental challenges, guiding a set of animated teeth through unique obstacles. With its engaging gameplay and colorful aesthetics, 'Teeth Runner' promises a fun and lighthearted experience, challenging players to skillfully navigate and conquer each dental obstacle in this entertaining and light-hearted endless runner.",
+    header: "Tap Away",
+    title: "Tap Away",
+    para: "Tap away is a escape game where users have to save the person freezing in the ice block",
     cover: Game3,
-    sources: [{ icon: Game3Logo1, link: "" }],
+    sources: [{ icon: Game2Logo1, link: "" }],
   },
   {
-    header: "Ball Blast",
-    title: "Ball Blast",
-    para: "Dive into the adrenaline-pumping action of 'Ball Blast. Unleash your shooting skills as you navigate through dynamic levels, blasting colorful balls to bits. With each level presenting escalating challenges, 'Ball Blast' offers an addictive and visually vibrant gaming experience",
+    header: "Mr Bean World Tour",
+    title: "Mr Bean World Tour",
+    para: "Dive into the adrenaline-pumping action of Mr Bean. Unleash your shooting skills as you navigate through dynamic levels, blasting colorful balls to bits. With each level presenting escalating challenges, 'Ball Blast' offers an addictive and visually vibrant gaming experience",
     cover: Game4,
     sources: [
-      { icon: Game4Logo1, link: "" },
-      { icon: Game4Logo2, link: "" },
-      { icon: Game4Logo3, link: "" },
+      { icon: Game2Logo1, link: "" },
+    
     ],
   },
 ];

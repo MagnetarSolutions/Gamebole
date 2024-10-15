@@ -318,13 +318,13 @@ const Home = () => {
           <div className="flex flex-col items-center">
             <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3"></div>
             <div className="flex justify-center text-xl md:text-2xl font-bold">
-              3D Render
+              Configurations
             </div>
           </div>
           <div className="flex flex-col items-center">
             <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3"></div>
             <div className="flex justify-center text-xl md:text-2xl font-bold">
-              3D Experience
+              3D Metaverse Experience
             </div>
           </div>
         </div>
