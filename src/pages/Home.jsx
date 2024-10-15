@@ -73,7 +73,7 @@ const coreTeamMembers = [
     memberProfile: TeammemberImg4,
     memberName: "Furqan Wahid",
     memberRole: "3d Artist",
-    memberLinks: ["www.linkedin.com/in/furqan-wahid-798baa20a", "", ""],
+    memberLinks: ["https://www.linkedin.com/in/furqan-wahid-798baa20a", "", ""],
   },
 ];
 
