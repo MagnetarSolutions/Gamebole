@@ -303,12 +303,9 @@ const Home = () => {
               artworks that transcend the ordinary, defining our commitment to
               excellence in every project.
             </div>
-            <div className="w-full h-full mt-4 flex justify-center md:inline">
-              <CustomButton text="Explore Now" />
-            </div>
           </div>
         ) : (
-          <div className="mt-12 ml-[10vw] mr-[5vw] h-[714px] flex justify-between align-middle">
+          <div className="mt-12 ml-[10vw] mr-[5vw] h-[714px] flex justify-start align-start">
             <div className="w-1/2 flex flex-col justify-center font-bold z-10">
               <div className="font-syne text-6xl text-[#002B65] dark:text-white mb-5 leading-tight">
                 Welcome to Gamebole
@@ -320,9 +317,6 @@ const Home = () => {
                 leaders and an inspired approach pave the way for creating
                 exceptional artworks that transcend the ordinary, defining our
                 commitment to excellence in every project.
-              </div>
-              <div className="w-full h-full">
-                <CustomButton text="Explore Now" />
               </div>
             </div>
             <div className="absolute w-3/5 h-[714px] ml-[30%] z-0 flex flex-col align-middle justify-center">

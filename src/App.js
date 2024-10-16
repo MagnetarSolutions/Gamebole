@@ -43,6 +43,14 @@ function App() {
                 path="/blog/pixel-perfection"
                 element={<BlogPixelPerfection />}
               ></Route>
+              <Route
+                path="*"
+                element={
+                  <div className="py-40 text-red-500 text-3xl font-semibold text-center bg-blue-950">
+                    404: PAGE NOT FOUND!
+                  </div>
+                }
+              />
             </Routes>
             <Footer />
             <Copyrights />

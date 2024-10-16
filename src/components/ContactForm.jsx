@@ -82,19 +82,20 @@ const ContactForm = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-center w-full py-8" id="contact">
+    <div
+      className="flex flex-wrap justify-center w-full pb-8 pt-10"
+      id="contact"
+    >
       <img
         src={Mysterio}
         className="hidden md:inline mr-8 w-[450px] h-[550px]"
         alt="contact-logo"
       />
       <div className="flex flex-col max-w-[550px] m-4">
-        <div className="font-bold text-xl text-[#DEA719] md:mb-2 text-center md:text-start">
+        <div className="font-bold text-3xl md:text-6xl text-[#DEA719] mb-4 md:mb-10 text-center md:text-start">
           CONTACT US
         </div>
-        <div className="text-[#002B65] dark:text-white font-medium text-4xl md:text-6xl font-syne text-center md:text-start my-4">
-          Interested in Working with Us?
-        </div>
+
         <form onSubmit={onSubmit}>
           <input
             className="w-full h-16 bg-black mb-2 input-gradient rounded-lg px-4 text-white"

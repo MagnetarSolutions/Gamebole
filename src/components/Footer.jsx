@@ -1,27 +1,32 @@
 import { DarkModeContext } from "contexts/DarkModeContext";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import FooterStrip from "resources/backgrounds/footer-strip.svg";
 import Logo from "resources/logo/logo.png";
-import PrivacyPolicy from "./PrivacyPolicy";
-
-const ItemList = ({ title, items }) => {
-  return (
-    <div className="m-8 my-4 md:my-8">
-      <div className="font-bold mb-2">{title}</div>
-      <div className="flex">
-        <div className="w-8 h-1 bg-[#006EFF]"></div>
-        <div className="w-14 h-1 bg-[#5BFFFF] rounded-r-full"></div>
-      </div>
-      {items.map((item) => (
-        <div className="my-2 md:my-4 cursor-pointer">{item.name}</div>
-      ))}
-    </div>
-  );
-};
 
 const Footer = () => {
   const [isDarkMode] = useContext(DarkModeContext);
+  const navigate = useNavigate();
 
+  const ItemList = ({ title, items, links, onClick }) => {
+    return (
+      <div className="m-8 my-4 md:my-8">
+        <div className="font-bold mb-2">{title}</div>
+        <div className="flex">
+          <div className="w-8 h-1 bg-[#006EFF]"></div>
+          <div className="w-14 h-1 bg-[#5BFFFF] rounded-r-full"></div>
+        </div>
+        {items.map((item, index) => (
+          <div
+            className="my-2 md:my-4 cursor-pointer hover:opacity-70"
+            onClick={onClick || (() => links[index] && navigate(links[index]))}
+          >
+            {item.name}
+          </div>
+        ))}
+      </div>
+    );
+  };
   return (
     <div className="h-[555px] bg-[#B4EAFF] dark:bg-[#110828] flex justify-center items-center transition-all duration-1000">
       <div
@@ -57,6 +62,7 @@ const Footer = () => {
                 { name: "Services" },
                 { name: "Contact Us" },
               ]}
+              links={["/", "/about", "/", "/services", "/#contact"]}
             />
           </div>
           <div>
@@ -69,16 +75,28 @@ const Footer = () => {
                 { name: "Game Design" },
                 { name: "Game Development" },
               ]}
+              links={["/blog", "/blog", "/blog", "/blog", "/blog"]}
             />
           </div>
           <div>
             <ItemList
               title={"Phone Numbers"}
               items={[{ name: "+92 3034443174" }]}
+              links={[]}
+              onClick={() => {
+                window.location.href = `tel:+923034443174`;
+              }}
             />
             <ItemList
               title={"Find Us"}
               items={[{ name: "Main Market, Lahore" }]}
+              links={[]}
+              onClick={() => {
+                window.open(
+                  `https://maps.app.goo.gl/RMXf8E96u8fvLfMN9`,
+                  "_blank"
+                );
+              }}
             />
           </div>
         </div>

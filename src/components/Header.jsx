@@ -79,7 +79,7 @@ const Header = () => {
         </div>
       ) : (
         <div className="flex justify-center">
-          <div className="absolute w-full max-w-[1140px] trapezoid z-50 text-[#051b39] dark:text-[#351375] transition-color"></div>
+          <div className="absolute w-full max-w-[1140px] trapezoid opacity-90 z-50 text-[#051b39] dark:text-[#351375] transition-color"></div>
           <div className="absolute w-full max-w-[1140px] px-[50px] h-[90px] flex justify-between text-white items-center z-50">
             <div className="flex flex-col justify-center">
               <img

@@ -263,6 +263,7 @@ input:checked + label svg.moon {
   .btn-primary {
     background: none;
     border: none;
+    transform: translateY(-1.5px);
   }
   .btn-primary:hover {
     background: none !important;
