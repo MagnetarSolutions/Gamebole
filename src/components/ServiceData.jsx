@@ -255,10 +255,10 @@ const ServiceData = ({ data, setActiveModal }) => {
     if (!variant) {
       const width =
         servicesWrapperRect.left - titleRect.left - titleRect.width / 2;
-      curveRef.current.style.width = width;
+      curveRef.current.style.width = width + "px";
       const height = servicesWrapperRect.height;
-      curveRef.current.style.height = height;
-      curveRef.current.style.left = titleRect.left + titleRect.width / 2;
+      curveRef.current.style.height = height + "px";
+      curveRef.current.style.left = titleRect.left + titleRect.width / 2 + "px";
 
       const firstCurvePoints = [];
       firstCurvePoints.push([CURVE_PADDING_MINOR, CURVE_PADDING]);
@@ -291,13 +291,15 @@ const ServiceData = ({ data, setActiveModal }) => {
         servicesWrapperRect.left -
         servicesWrapperRect.width +
         titleRect.width / 2;
-      curveRef.current.style.width = width;
+      curveRef.current.style.width = width + "px";
       const height = servicesWrapperRect.height;
-      curveRef.current.style.height = height;
+      curveRef.current.style.height = height + "px";
       if (variant)
         curveRef.current.style.left =
-          servicesWrapperRect.left + servicesWrapperRect.width;
-      else curveRef.current.style.left = titleRect.left + titleRect.width / 2;
+          servicesWrapperRect.left + servicesWrapperRect.width + "px";
+      else
+        curveRef.current.style.left =
+          titleRect.left + titleRect.width / 2 + "px";
 
       const firstCurvePoints = [];
       firstCurvePoints.push([width - CURVE_PADDING_MINOR, CURVE_PADDING]);

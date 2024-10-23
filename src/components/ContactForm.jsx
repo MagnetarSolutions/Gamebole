@@ -92,7 +92,7 @@ const ContactForm = () => {
         alt="contact-logo"
       />
       <div className="flex flex-col max-w-[550px] m-4">
-        <div className="font-bold text-3xl md:text-6xl text-[#DEA719] mb-4 md:mb-10 text-center md:text-start">
+        <div className="font-semibold text-3xl md:text-6xl text-[#002B65] mb-4 md:mb-10 text-center md:text-start">
           CONTACT US
         </div>
 

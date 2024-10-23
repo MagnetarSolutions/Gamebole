@@ -40,10 +40,10 @@ const Blog = () => {
             <CustomButton text="Explore Now"></CustomButton>
           </div>
           <img
-            className="max-w-[40%] hidden md:inline"
+            className="max-w-[40%] hidden md:inline animate-float"
             src={Laptop}
             alt="laptop"
-          ></img>
+          />
         </div>
         <div className="w-full flex justify-center mt-[550px] md:mt-[350px]">
           <div className="flex flex-wrap justify-center mt-10 max-w-[1200px]">
