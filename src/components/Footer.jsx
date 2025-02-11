@@ -46,9 +46,7 @@ const Footer = () => {
         <div className="flex-col max-w-60 md:max-w-80 mb-4 hidden md:flex">
           <img className="w-40 md:w-56 mb-2" src={Logo} alt="logo"></img>
           <div>
-            Gamebole: A global game development partner that helps developers
-            and publishers to build games by providing custom engineering and
-            game art services.
+          Your global game development partner, delivering custom engineering, game art, and immersive experiences for developers and publishers worldwide.
           </div>
         </div>
         <div className="flex flex-wrap w-full md:max-w-[50%] justify-start md:justify-around">

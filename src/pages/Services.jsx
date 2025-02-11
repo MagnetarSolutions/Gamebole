@@ -84,15 +84,10 @@ const Services = () => {
         <div className="w-full h-[600px] md:h-[720px] flex items-center justify-center relative">
           <div className="mt-16 md:mt-0 max-w-[90%] lg:max-w-[40%]">
             <div className="font-syne text-3xl md:text-5xl font-bold text-[#051B39] dark:text-white leading-tight mb-2 transition-color duration-1000">
-              Gamebole: Elevating Game Development
+              You Dream, We Develop
             </div>
             <div className="font-raleway text-[#051B39] dark:text-white text-base md:text-lg font-normal leading-normal mb-8 transition-color duration-1000">
-              Gamebole offers unparalleled game development services tailored to
-              bring your vision to life. With a team of seasoned professionals,
-              we specialize in custom game engineering and artistry, ensuring
-              every project is an immersive masterpiece. From concept to
-              execution, Gamebole is your trusted partner in shaping the future
-              of gaming experiences.
+            Gamebole Studios creates interactive digital experiences. We build games for Android, iOS (Unity), and Web (PlayCanvas). Our team also develops 3D metaverses, product configurators, and AR solutions. Whether it’s a game, a virtual world, or a product showcase, we bring ideas to life with innovation and creativity.
             </div>
             <CustomButton text="Explore Now"></CustomButton>
           </div>
