@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import RightArrow from "resources/icons/arrow right.svg";
 
-const BlogCard = ({ blogData, extraClasses }) => {
+const BlogCard = ({ blogData, extraClasses, isCareer = false }) => {
   const navigate = useNavigate();
 
   return (
@@ -20,7 +20,7 @@ const BlogCard = ({ blogData, extraClasses }) => {
         <div className="text-[#818AA6] dark:text-[#3D6EB7]">
           {blogData.publishDate}
         </div>
-        <div className=" font-semibold text-base text-[#222D39] dark:text-white leading-tight mt-2 mb-1">
+        <div className="font-semibold text-base text-[#222D39] dark:text-white leading-tight mt-2 mb-1">
           {blogData.title}
         </div>
         <div className="font-light text-sm dark:text-white">
@@ -36,9 +36,9 @@ const BlogCard = ({ blogData, extraClasses }) => {
         <div className="flex cursor-pointer mb-3 w-24 select-none text-sm dark:text-white font-light group">
           <div
             className="hover:underline group-hover:mr-1 transition-all duration-500"
-            onClick={() => navigate(blogData.link)}
+            onClick={() => navigate(isCareer ? blogData.applyLink : blogData.link)}
           >
-            Read More
+            {isCareer ? "Apply Now" : "Read More"}
           </div>
           <img src={RightArrow} alt="arrow" className="w-5"></img>
         </div>

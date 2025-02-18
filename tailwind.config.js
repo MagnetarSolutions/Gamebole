@@ -4,6 +4,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      colors: {
+        'custom-blue': '#0081db',
+        'dark-card': '#452C63',
+      },
       fontFamily: {
         raleway: ["Raleway", "sans"],
         syne: ["Syne", "sans"],

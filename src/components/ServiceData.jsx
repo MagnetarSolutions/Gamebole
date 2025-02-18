@@ -68,7 +68,7 @@ const ServiceSection = ({
             ? "service-selector-gradient-B-unselected"
             : "service-selector-gradient-A-unselected"
         } cursor-pointer rounded`}
-        onClick={onClick}
+        onMouseEnter={onClick}  // Change onClick to onMouseEnter
       >
         <img className="w-16 h-16" src={image} alt="service" />
         <div
@@ -86,6 +86,8 @@ const ServiceSection = ({
     </div>
   );
 };
+
+
 
 const ServiceSections = ({
   services,

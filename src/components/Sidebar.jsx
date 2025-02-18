@@ -73,12 +73,12 @@ const Sidebar = ({ isOpen, toggleSidebar, isDarkMode, toggleDarkMode }) => {
             <SidebarItem
               title={"Career"}
               icon={Career}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/career")}
             />
             <SidebarItem
               title={"Contact"}
               icon={Contact}
-              onClick={() => navigate("/")}
+              onClick={() => navigate("/#contact")}
             />
           </div>
           <div className="mb-5">
