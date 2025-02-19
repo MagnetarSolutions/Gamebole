@@ -128,8 +128,8 @@ const ClientReviews = () => {
     <div className="w-full py-20 bg-gradient-to-r from-[#F4F7FF] to-[#E4E9F2]">
       {/* Section Title */}
       <div className="flex flex-col items-center mb-12">
-        <div className="text-3xl font-semibold text-[#002B65]">What Our Clients Say</div>
-        <div className="w-24 h-1 bg-[#DEA719] mt-2 mb-6"></div>
+        <div className="text-5xl pt-5 font-semibold text-[#002B65] dark:text-white">What Our Clients Say</div>
+        <div className="w-[22%] h-1 bg-[#DEA719] mr-6 mt-2 mb-6"></div>
       </div>
 
       {/* Reviews Slider */}
@@ -314,19 +314,24 @@ const Home = () => {
             top: '0',
             left: '0',
             objectFit: 'cover',
+          
+          
           }}
         ></iframe>
+        <div className="absolute bottom-[-60px] left-0 w-full h-[62px] bg-[#B4EAFF] dark:bg-[#110828]"></div>
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
             <div className="font-syne text-4xl md:text-8xl text-white font-bold mb-4 fade-in">You Dream,<br /> We Develop</div>
-            <div className="flex justify-center">
+           
+          </div>
+          <div className="relative right-[45%] top-[13%]">
               <CustomButton
                 text="Contact Us"
                 onClick={handleContactClick}
+                className=""
               />
             </div>
-          </div>
           <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-8 z-20 w-full max-w-screen-xl">
           <div className="flex justify-between w-full gap-8">
             {/* Happy Clients Card */}
@@ -379,53 +384,59 @@ const Home = () => {
             </div>
           </div>
         )} */}
-        <div className="flex justify-center text-xl font-raleway text-[#DEA719] dark:text-white font-extrabold mt-16">OUR COLLECTION</div>
+        <div className="flex justify-center text-xl font-raleway text-[#DEA719] dark:text-[#DEA719] font-extrabold mt-16">OUR COLLECTION</div>
         <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] dark:text-white mt-2 mb-6">Gamebole Offers</div>
 
         <div className="flex justify-center flex-wrap gap-8 mb-16 text-[#002B65] dark:text-white">
-          <div className="flex flex-col items-start bg-gradient-to-r from-[#00A9E0] to-[#005A86] rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
-            <div className="absolute inset-0 bg-black opacity-20 rounded-2xl"></div>
-            <div className="rounded-2xl overflow-hidden mb-4 z-10">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? gdLight : gdDark} alt="Game Development" />
-            </div>
-            <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Game Development</div>
-            <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
-              Android/iOS (Unity) & Web (Playcanvas) games designed to engage and entertain players on multiple platforms.
-            </div>
-          </div>
+       
+  <div className="flex flex-col items-start bg-gradient-to-r from-[#00A9E0] to-[#005A86] blog-card-gradient dark:border dark:border-white rounded-xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+    <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-2xl"></div>
+    <div className="rounded-2xl overflow-hidden mb-4 z-10">
+      <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? gdLight : gdDark} alt="Game Development" />
+    </div>
+    <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Game Development</div>
+    <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+      Android/iOS (Unity) & Web (Playcanvas) games designed to engage and entertain players on multiple platforms.
+    </div>
+  </div>
 
-          <div className="flex flex-col items-start bg-gradient-to-r from-[#7B2E8C] to-[#580A52] rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
-            <div className="absolute inset-0 bg-black opacity-20 rounded-2xl"></div>
-            <div className="rounded-2xl overflow-hidden mb-4 z-10">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? metaLight : metaDark} alt="Metaverses" />
-            </div>
-            <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Metaverses</div>
-            <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
-              3D multiplayer worlds with free-roaming interactions where users can connect and explore limitless possibilities.
-            </div>
-          </div>
 
-          <div className="flex flex-col items-start bg-gradient-to-r from-[#FFC42E] to-[#FF4F00] rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
-            <div className="absolute inset-0 bg-black opacity-20 rounded-2xl"></div>
-            <div className="rounded-2xl overflow-hidden mb-4 z-10">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? arLight : arDark} alt="AR Integration" />
-            </div>
-            <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">AR Integration</div>
-            <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
-              Product visualization with 3D models and AR viewers to help showcase products in a real-world context.
-            </div>
-          </div>
 
-          <div className="flex flex-col items-start bg-gradient-to-r from-[#E040FF] to-[#9B1DFF] rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
-            <div className="absolute inset-0 bg-black opacity-20 rounded-2xl"></div>
-            <div className="rounded-2xl overflow-hidden mb-4 z-10">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? configLight : configDark} alt="Interactive Experiences" />
-            </div>
-            <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Interactive Experiences</div>
-            <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
-              Configurations, simulations, and visualizations designed to create engaging and educational user interactions.
-            </div>
-          </div>
+  <div className="flex flex-col items-start bg-gradient-to-r from-[#7B2E8C] to-[#580A52] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? metaLight : metaDark} alt="Metaverses" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Metaverses</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    3D multiplayer worlds with free-roaming interactions where users can connect and explore limitless possibilities.
+  </div>
+</div>
+
+
+<div className="flex flex-col items-start bg-gradient-to-r from-[#FFC42E] to-[#FF4F00] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? arLight : arDark} alt="AR Integration" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">AR Integration</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    Product visualization with 3D models and AR viewers to help showcase products in a real-world context.
+  </div>
+</div>
+
+
+<div className="flex flex-col items-start bg-gradient-to-r from-[#E040FF] to-[#9B1DFF] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? configLight : configDark} alt="Interactive Experiences" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Interactive Experiences</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    Configurations, simulations, and visualizations designed to create engaging and educational user interactions.
+  </div>
+</div>
+
         </div>
 
 
