@@ -16,7 +16,7 @@ const InteractionButton = ({ text, className }) => {
 const AiInteractor = () => {
   return (
     <div
-      className="flex flex-col justify-center items-center bg-aiInteractor dark:bg-aiInteractorDark h-[900px] md:h-[624px] px-4 md:px-[15%] text-white bg-cover transition-all duration-1000 max-w-[2000px]"
+      className="flex flex-col justify-center items-center bg-aiInteractor dark:bg-aiInteractorDark h-[900px] md:h-[624px] px-4 md:px-[15%] dark:bg-black text-white bg-cover transition-all duration-1000 max-w-[2000px]"
       id="ai"
     >
       <div className="font-syne text-3xl md:text-5xl font-bold mb-4">AI</div>

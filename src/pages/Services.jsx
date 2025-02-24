@@ -11,6 +11,11 @@ import ServiceDataMobile from "components/ServiceDataMobile";
 import useScreenSize from "hooks/useScreenSize";
 import SpiderwebAnimation from "components/SpiderwebAnimation";
 import { useLocation } from "react-router-dom";
+import Servicegamecard from "components/ServiceGameCard";
+import Servicexdcard from "components/ServiceXRcard";
+import Servicevirtualizecard from "components/ServicevirtuCard";
+import Servicewebcard from "components/ServiveWebCard";
+import ServiceSDKcard from "components/ServiceSDKcard";
 
 const GameCard = ({ gameCardData }) => {
   const { header, title, para, cover, sources } = gameCardData;
@@ -93,6 +98,11 @@ const Services = () => {
           </div>
           <SpiderwebAnimation />
         </div>
+        <Servicegamecard/>
+        <Servicexdcard/>
+        <Servicevirtualizecard/>
+        <Servicewebcard/>
+        <ServiceSDKcard/>
         {servicesData.map((service) =>
           isLgScreen ? (
             <ServiceData

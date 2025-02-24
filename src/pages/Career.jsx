@@ -24,7 +24,7 @@ const Career = () => {
     <div className="career w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden relative z-0 flex justify-center">
       <div className="max-w-[2000px]">
         <Background page="career" />
-        <div className="w-full h-[500px] md:h-[700px] flex items-center justify-center relative">
+        <div className="w-[2000px] h-[500px] md:h-[700px] flex items-center justify-center relative">
           <div className="mt-28 max-w-[80%] md:max-w-[40%]">
             <div className="font-syne text-2xl md:text-5xl font-bold text-[#051B39] dark:text-white mb-2 md:mb-4">
               JOIN THE GAMEBOLE TEAM

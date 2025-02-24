@@ -17,6 +17,8 @@ import techDark from "resources/icons/tech-dark.png";
 import techLight from "resources/icons/tech-light.png";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import ClientImg1 from "resources/images/Sabrina.jpg";
+import ClientImg2 from "resources/images/client2.png";
+import ClientImg3 from "resources/images/client 1.png";
 import ClientLogo1 from "resources/logo/IntervideoLogo.png";
 import FrontSelect from "resources/icons/frontSelect.svg";
 import BackSelect from "resources/icons/backSelect.svg";
@@ -35,24 +37,26 @@ import { DarkModeContext } from "contexts/DarkModeContext";
 import { useLocation, useParams } from "react-router-dom";
 
 const clientData = [
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "Sabrina Grob",
-    clientReview: "Very quick response and short processing times, good result, pleasant cooperation. Clear recommendation!",
-  },
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "James Blue",
-    clientReview: "Made a good game with the help of Gamebole...",
-  },
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "James White",
-    clientReview: "Made a good game with the help of Gamebole...",
-  },
+    {
+      clientImg: ClientImg1,
+      clientLogo: ClientLogo1,
+      clientName: "Sabrina Grob",
+      clientReview: "I had an amazing experience working with this team! Their quick response time and short processing durations made everything incredibly smooth. The results were beyond my expectations, and the cooperation was nothing short of fantastic. I highly recommend their services to anyone looking for efficiency and professionalism!",
+    },
+    {
+      clientImg: ClientImg2,
+      clientLogo: ClientLogo1,
+      clientName: "James Blue",
+      clientReview: "Game development has never been easier! Thanks to Gamebole, I was able to create a well-structured and engaging game that players truly love. Their expertise and guidance throughout the process were invaluable. If you need a reliable team to bring your game ideas to life, look no further!",
+    },
+    {
+      clientImg: ClientImg3,
+      clientLogo: ClientLogo1,
+      clientName: "Samith White",
+      clientReview: "The experience of working with Gamebole was outstanding! From the initial planning phase to the final product, their support and technical knowledge made all the difference. My game turned out even better than I had imagined, and I couldn't be happier with the outcome!",
+    },
+
+  
 ];
 
 const coreTeamMembers = [
@@ -118,53 +122,96 @@ const TechIconScroller = () => {
 };
 
 
-const ClientReviews = () => {
-  const [selectedClient, selectClient] = useState(0);
 
-  const selectNextClient = () => selectClient((selectedClient + 1) % clientData.length);
-  const selectPrevClient = () => selectClient(selectedClient - 1 === -1 ? clientData.length - 1 : selectedClient - 1);
+
+const ClientReviews = () => {
+  const [selectedClient, setSelectedClient] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  const selectNextClient = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setSelectedClient((selectedClient + 1) % clientData.length);
+        setIsAnimating(false);
+      }, 300); // Animation duration
+    }
+  };
+
+  const selectPrevClient = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setSelectedClient(selectedClient - 1 === -1 ? clientData.length - 1 : selectedClient - 1);
+        setIsAnimating(false);
+      }, 300);
+    }
+  };
 
   return (
     <div className="w-full py-20 bg-gradient-to-r from-[#F4F7FF] to-[#E4E9F2]">
       {/* Section Title */}
       <div className="flex flex-col items-center mb-12">
         <div className="text-5xl pt-5 font-semibold text-[#002B65] dark:text-white">What Our Clients Say</div>
-        <div className="w-[22%] h-1 bg-[#DEA719] mr-6 mt-2 mb-6"></div>
+        <div className="w-[22%] h-1 bg-[#DEA719] mt-2 mb-6"></div>
       </div>
 
       {/* Reviews Slider */}
       <div className="relative flex justify-center">
-        <div className="max-w-4xl w-full">
-          {/* Client Review Card */}
-          <div className="relative w-full bg-[#0081db] dark:bg-dark-card rounded-xl p-6 shadow-lg transition-all duration-500 ease-in-out">
-            <div className="flex items-center mb-6">
-              <div className="w-16 h-16 rounded-full overflow-hidden mr-4">
-                <img src={clientData[selectedClient].clientImg} alt="Client" className="w-full h-full object-cover" />
-              </div>
-              <div className="text-lg font-semibold text-[#DEA719]">{clientData[selectedClient].clientName}</div>
-            </div>
-            <div className="text-base text-white mb-10 pl-6">{clientData[selectedClient].clientReview}</div> {/* Added padding to the left */}
+        <div className="max-w-5xl w-full bg-[#0081db] dark:bg-dark-card rounded-xl p-12 shadow-lg flex items-center">
+          
+          {/* Client Image - Left Side */}
+          <div className="w-56 h-56 rounded-full mb-8 overflow-hidden flex-shrink-0">
+            <img 
+              src={clientData[selectedClient].clientImg} 
+              alt="Client" 
+              className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`} 
+            />
+          </div>
 
-            <div className="flex justify-center gap-4">
-              {/* Client Logo */}
-              <div className="w-24 h-12 border-2 border-[#DEA719] rounded-lg overflow-hidden flex items-center justify-center">
-                <img src={clientData[selectedClient].clientLogo} className="w-full h-full object-contain" alt="Client Logo" />
-              </div>
+          {/* Client Info - Right Side */}
+          <div className="ml-6 flex flex-col flex-grow">
+            
+            <div className={`text-base text-white transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              {clientData[selectedClient].clientReview}
+            </div>
+            <div className={`text-lg font-semibold my-1 text-[#DEA719] transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              {clientData[selectedClient].clientName}
+            </div>
+            
+            <div className="flex justify-between items-center">
+          {/* Client Logo */}
+          <div className={`w-28 h-12 p-2 border-2 border-[#DEA719] rounded-lg overflow-hidden flex items-center justify-center transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              <img src={clientData[selectedClient].clientLogo} className="w-full h-full object-contain" alt="Client Logo" />
             </div>
 
-            {/* Navigation Arrows */}
-            <div className="absolute top-1/2 left-2 transform -translate-y-1/2 cursor-pointer z-20" onClick={selectPrevClient}>
-              <img src={BackSelect} className="w-10 h-10 text-white p-2" alt="Previous" />
-            </div>
-            <div className="absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer z-20" onClick={selectNextClient}>
-              <img src={FrontSelect} className="w-10 h-10 text-white p-2" alt="Next" />
+            {/* Navigation Arrows - Right Side Below Comments */}
+            <div className="flex justify-end mt-4">
+              <div 
+                className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
+                onClick={selectPrevClient}
+              >
+                <img src={BackSelect} className="w-14 h-14 text-white p-2" alt="Previous" />
+              </div>
+              <div 
+                className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
+                onClick={selectNextClient}
+              >
+                <img src={FrontSelect} className="w-14 h-14 text-white p-2" alt="Next" />
+              </div>
             </div>
           </div>
+            </div>
+
+            
+          
         </div>
       </div>
     </div>
   );
 };
+
+
 
 
 
@@ -438,9 +485,6 @@ const Home = () => {
 </div>
 
         </div>
-
-
-
         <TechIconScroller />
         <ClientReviews />
         <CoreTeam />
