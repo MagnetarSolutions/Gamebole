@@ -87,42 +87,35 @@ const coreTeamMembers = [
 ];
 
 const TechIconScroller = () => {
-  const [logoScrollMode, setLogoScrollMode] = useState(0);
-  const logoScrollModeRef = useRef(0);
   const [isDarkMode] = useContext(DarkModeContext);
-  const timeoutRef = useRef(null);
+  const logoScrollModeRef = useRef(0);
+  const [logoScrollMode, setLogoScrollMode] = useState(0);
 
-  // Toggle between two scroll modes (which could be two images or two different scroll states)
   const toggleNextMode = () => {
     logoScrollModeRef.current = (logoScrollModeRef.current + 1) % 2;
     setLogoScrollMode(logoScrollModeRef.current);
   };
 
   useEffect(() => {
-    // This makes the logo continue to loop
-    timeoutRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       toggleNextMode();
-    }, 20000); // Adjust the timing based on how fast you want the scroll transition
+    }, 20000);
 
-    return () => timeoutRef.current && clearInterval(timeoutRef.current);
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 dark:bg-backgroundStrip1Dark bg-no-repeat bg-cover flex justify-start items-center overflow-hidden">
-      {/* Ensure images are moving infinitely */}
       <img
-        className={`min-w-[300%] max-h-[60%] transition-all duration-[20000ms] ease-linear ${
-          logoScrollMode === 0 ? "ml-0" : "ml-[-173%]"
+        className={`min-w-[300%] max-h-[60%] transition-transform duration-[20000ms] ease-linear ${
+          logoScrollMode === 0 ? "translate-x-0" : "-translate-x-[66.66%]"
         }`}
         src={isDarkMode ? techLight : techDark}
-        alt={"technology slider"}
+        alt="technology slider"
       />
     </div>
   );
 };
-
-
-
 
 const ClientReviews = () => {
   const [selectedClient, setSelectedClient] = useState(0);
@@ -210,10 +203,6 @@ const ClientReviews = () => {
     </div>
   );
 };
-
-
-
-
 
 const IconGroup = ({ links, height = 38 }) => {
   return (

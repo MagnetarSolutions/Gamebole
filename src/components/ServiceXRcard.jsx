@@ -67,25 +67,27 @@ const gamesData = [
 const GameCard = ({ game }) => {
   const { text, link, src, srcDark } = game.button;
   return (
-    <div className="overflow-hidden p-4 w-[450px] mt-8 service-content-gradient-B dark:bg-dark-card">
-      <h3 className="w-full text-center font-syne font-semibold text-3xl mb-8 transition-color duration-1000 dark:text-white ">
+    <div className="overflow-hidden p-4 w-full max-w-xs md:max-w-sm lg:max-w-md mt-8 service-content-gradient-B dark:bg-dark-card">
+      <h3 className="w-full text-center font-syne font-semibold text-2xl md:text-3xl mb-8 transition-color duration-1000 dark:text-white">
         {game.title}
       </h3>
-      <img src={game.image1} alt={game.title} className="max-w-full h-10 mb-4" />
-      <p className="w-full mb-3 text-start font-raleway text-lg leading-tight transition-color duration-1000 dark:text-white">
+      <img src={game.image1} alt={game.title} className="max-w-full h-auto mb-4" />
+      <p className="w-full mb-3 text-start font-raleway text-base md:text-lg leading-tight transition-color duration-1000 dark:text-white">
         {game.description1}
       </p>
-      <img src={game.image2} alt={game.title} className="max-w-full h-10 mb-4" />
-      <p className="w-full mb-3 text-start font-raleway text-lg leading-tight transition-color duration-1000 dark:text-white">
+      <img src={game.image2} alt={game.title} className="max-w-full h-auto mb-4" />
+      <p className="w-full mb-3 text-start font-raleway text-base md:text-lg leading-tight transition-color duration-1000 dark:text-white">
         {game.description2}
       </p>
-      <div className="mt-4 flex justify-center relative mr-14">
-      <CustomButton
-        text={text}
-        icon={src}
-        iconDark={srcDark}
-        isSmall
-      />
+      <div className="mt-4 flex justify-center relative">
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <CustomButton
+            text={text}
+            icon={src}
+            iconDark={srcDark}
+            isSmall
+          />
+        </a>
       </div>
     </div>
   );
@@ -96,35 +98,29 @@ const Servicexdcard = () => {
 
   return (
     <div
-    className="flex flex-col items-center justify-center p-10 relative transition-all duration-500
-               bg-[url('resources/services/2/background.png')] 
-               dark:bg-[url('resources/services/4/backgroundDark.png')] 
-               bg-cover bg-center "
-  >
-  
-          <img src={mainimg} alt="" className="absolute top-10 w-60 right-32"/>
-      {/* Heading */}
-      <h2 className="text-3xl font-bold text-white">XR</h2>
+      className="flex flex-col items-center justify-center p-10 relative transition-all duration-500
+               bg-[url('resources/services/2/background.png')]
+               dark:bg-[url('resources/services/4/backgroundDark.png')]
+               bg-cover bg-center"
+    >
+      <img src={mainimg} alt="" className="absolute top-10 w-60 right-32 md:w-48 md:right-24 lg:w-60 lg:right-32" />
 
-      <svg width="900" height="110" className="mt-2">
+      <h2 className="text-3xl font-bold text-white md:text-2xl lg:text-3xl">XR</h2>
+
+      <svg width="900" height="110" className="mt-2 md:mt-4 lg:mt-2">
         <line x1="450" y1="0" x2="450" y2="100" stroke="white" strokeWidth="1" strokeLinecap="round" />
         <line x1="100" y1="50" x2="800" y2="50" stroke="white" strokeWidth="1" strokeLinecap="round" />
         <line x1="100" y1="50" x2="100" y2="100" stroke="white" strokeWidth="1" strokeLinecap="round" />
         <line x1="800" y1="50" x2="800" y2="100" stroke="white" strokeWidth="1" strokeLinecap="round" />
       </svg>
 
-      {/* Buttons */}
       <div className="flex items-center justify-center gap-[235px]">
         {["AR", "VR", "MR"].map((category) => (
           <button
             key={category}
             onClick={() => setSelectedCategory(category)}
             className={`flex items-center w-28 gap-2 px-3 py-2 rounded-lg shadow-md transition-all duration-300 border-[3px] border-[#ffffff00] hover:border-orange-300 dark:hover:border-[#FF9900]
-              ${
-                selectedCategory === category
-                  ? "bg-gray-100 text-black"
-                  : "bg-gray-200 text-gray-800"
-              }`}
+              ${selectedCategory === category ? "bg-gray-100 text-black" : "bg-gray-200 text-gray-800"}`}
           >
             <img
               src={
@@ -142,8 +138,7 @@ const Servicexdcard = () => {
         ))}
       </div>
 
-      {/* Cards Section */}
-      <div className="flex justify-center gap-6 p-8">
+      <div className="flex flex-wrap justify-center gap-6 p-8">
         {gamesData.map((game, index) => (
           <GameCard key={index} game={game} />
         ))}

@@ -65,11 +65,8 @@ const Services = () => {
   const [activeModal, setActiveModal] = useState(false);
 
   const screenSize = useScreenSize();
-
   const isLgScreen = screenSize >= SCREEN_SIZES.lg;
-
   const [isDarkMode] = useContext(DarkModeContext);
-
   const location = useLocation();
 
   useEffect(() => {
@@ -92,25 +89,31 @@ const Services = () => {
               You Dream, We Develop
             </div>
             <div className="font-raleway text-[#051B39] dark:text-white text-base md:text-lg font-normal leading-normal mb-8 transition-color duration-1000">
-            Gamebole Studios creates interactive digital experiences. We build games for Android, iOS (Unity), and Web (PlayCanvas). Our team also develops 3D metaverses, product configurators, and AR solutions. Whether it’s a game, a virtual world, or a product showcase, we bring ideas to life with innovation and creativity.
+              Gamebole Studios creates interactive digital experiences. We build games for Android, iOS (Unity), and Web (PlayCanvas). Our team also develops 3D metaverses, product configurators, and AR solutions. Whether it’s a game, a virtual world, or a product showcase, we bring ideas to life with innovation and creativity.
             </div>
             <CustomButton text="Explore Now"></CustomButton>
           </div>
           <SpiderwebAnimation />
         </div>
-        <Servicegamecard/>
-        <Servicexdcard/>
-        <Servicevirtualizecard/>
-        <Servicewebcard/>
-        <ServiceSDKcard/>
+        {isLgScreen && (
+          <>
+            <Servicegamecard />
+            <Servicexdcard />
+            <Servicevirtualizecard />
+            <Servicewebcard />
+            <ServiceSDKcard />
+          </>
+        )}
         {servicesData.map((service) =>
           isLgScreen ? (
             <ServiceData
+              key={service.id}
               data={service}
               setActiveModal={(val) => setActiveModal(val)}
             />
           ) : (
             <ServiceDataMobile
+              key={service.id}
               data={service}
               setActiveModal={(val) => setActiveModal(val)}
             />
@@ -125,7 +128,7 @@ const Services = () => {
         title={"Hello world"}
         wrapperClasses={isDarkMode ? "bg-[#3A177E] dark" : "bg-[#D3E5FE]"}
       >
-        <div className=" font-syne text-xl w-full text-center text-[#051B39] dark:text-[#FF9900]">
+        <div className="font-syne text-xl w-full text-center text-[#051B39] dark:text-[#FF9900]">
           H5 Games
         </div>
         <div className="flex w-[900px]">
@@ -150,3 +153,4 @@ const Services = () => {
 };
 
 export default Services;
+
