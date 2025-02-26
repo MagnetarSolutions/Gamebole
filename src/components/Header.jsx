@@ -120,7 +120,12 @@ const Header = () => {
                     AI (Mouth Sync)
                   </Dropdown.Item>
                 </DropdownButton>
-                <div className="mx-2 font-sfui cursor-pointer">CAREER</div>
+                <div
+                  className="mx-2 font-sfui cursor-pointer"
+                  onClick={() => navigate("/career")}
+                >
+                  CAREER
+                </div>
               </div>
             </div>
             <div className="flex">

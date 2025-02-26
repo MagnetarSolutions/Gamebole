@@ -60,7 +60,7 @@ const Footer = () => {
                 { name: "Services" },
                 { name: "Contact Us" },
               ]}
-              links={["/", "/about", "/", "/services", "/#contact"]}
+              links={["/home", "/home", "/career", "/services", "/#contact"]}
             />
           </div>
           <div>

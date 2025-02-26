@@ -135,6 +135,17 @@ export const BACKGROUND = {
     MiddleStrip1: true,
     MiddleStrip2: true,
   },
+  career: {
+    TopWhiteWaves: false,
+    TopDarkWaves: true,
+    TopTransition: true,
+    MiddleDarkWaves: true,
+    TopCylinder: true,
+    TopCube: true,
+    Blob: false,
+    MiddleStrip1: true,
+    MiddleStrip2: true,
+  },
 };
 
 export const dummyBlogData = [
@@ -212,6 +223,34 @@ export const dummyBlogData = [
     tags: ["Game Development", "Unity Software"],
   },
 ];
+
+export const dummyCareerData = [
+  {
+    img: BlogImage1,
+    publishDate: "January 2025",
+    title: "Software Engineer",
+    teaser: "Join our engineering team to build innovative games and applications.",
+    tags: ["Engineering", "Full-Time"],
+    applyLink: "/apply/software-engineer",
+  },
+  {
+    img: BlogPixelPerfectionCover,
+    publishDate: "March 2025",
+    title: "Game Designer",
+    teaser: "Design and develop engaging game experiences.",
+    tags: ["Design", "Full-Time"],
+    applyLink: "/apply/game-designer",
+  },
+  {
+    img: BlogImage1,
+    publishDate: "May 2025",
+    title: "Product Manager",
+    teaser: "Lead the development and launch of new game products.",
+    tags: ["Management", "Full-Time"],
+    applyLink: "/apply/product-manager",
+  },
+];
+
 
 export const servicesData = [
   {

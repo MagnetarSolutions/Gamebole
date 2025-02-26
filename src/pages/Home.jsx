@@ -17,6 +17,8 @@ import techDark from "resources/icons/tech-dark.png";
 import techLight from "resources/icons/tech-light.png";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import ClientImg1 from "resources/images/Sabrina.jpg";
+import ClientImg2 from "resources/images/client2.png";
+import ClientImg3 from "resources/images/client 1.png";
 import ClientLogo1 from "resources/logo/IntervideoLogo.png";
 import FrontSelect from "resources/icons/frontSelect.svg";
 import BackSelect from "resources/icons/backSelect.svg";
@@ -29,30 +31,32 @@ import TeammemberImg4 from "resources/images/DP_Furqan.png";
 import LinkedinLogo from "resources/icons/linkedin.js";
 import FacebookLogo from "resources/icons/facebook.js";
 import TwitterLogo from "resources/icons/twitter.js";
-
+import { useNavigate } from "react-router-dom";
 import ContactForm from "components/ContactForm";
 import { DarkModeContext } from "contexts/DarkModeContext";
 import { useLocation, useParams } from "react-router-dom";
 
 const clientData = [
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "Sabrina Grob",
-    clientReview: "Very quick response and short processing times, good result, pleasant cooperation. Clear recommendation!",
-  },
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "James Blue",
-    clientReview: "Made a good game with the help of Gamebole...",
-  },
-  {
-    clientImg: ClientImg1,
-    clientLogo: ClientLogo1,
-    clientName: "James White",
-    clientReview: "Made a good game with the help of Gamebole...",
-  },
+    {
+      clientImg: ClientImg1,
+      clientLogo: ClientLogo1,
+      clientName: "Sabrina Grob",
+      clientReview: "I had an amazing experience working with this team! Their quick response time and short processing durations made everything incredibly smooth. The results were beyond my expectations, and the cooperation was nothing short of fantastic. I highly recommend their services to anyone looking for efficiency and professionalism!",
+    },
+    {
+      clientImg: ClientImg2,
+      clientLogo: ClientLogo1,
+      clientName: "James Blue",
+      clientReview: "Game development has never been easier! Thanks to Gamebole, I was able to create a well-structured and engaging game that players truly love. Their expertise and guidance throughout the process were invaluable. If you need a reliable team to bring your game ideas to life, look no further!",
+    },
+    {
+      clientImg: ClientImg3,
+      clientLogo: ClientLogo1,
+      clientName: "Samith White",
+      clientReview: "The experience of working with Gamebole was outstanding! From the initial planning phase to the final product, their support and technical knowledge made all the difference. My game turned out even better than I had imagined, and I couldn't be happier with the outcome!",
+    },
+
+  
 ];
 
 const coreTeamMembers = [
@@ -83,10 +87,9 @@ const coreTeamMembers = [
 ];
 
 const TechIconScroller = () => {
-  const [logoScrollMode, setLogoScrollMode] = useState(0);
-  const logoScrollModeRef = useRef(0);
-  const timeoutRef = useRef(null);
   const [isDarkMode] = useContext(DarkModeContext);
+  const logoScrollModeRef = useRef(0);
+  const [logoScrollMode, setLogoScrollMode] = useState(0);
 
   const toggleNextMode = () => {
     logoScrollModeRef.current = (logoScrollModeRef.current + 1) % 2;
@@ -94,62 +97,108 @@ const TechIconScroller = () => {
   };
 
   useEffect(() => {
-    toggleNextMode();
-    timeoutRef.current = setInterval(() => {
+    const interval = setInterval(() => {
       toggleNextMode();
-      if (logoScrollModeRef.current === 0) setTimeout(() => toggleNextMode(), 10);
     }, 20000);
-    return () => timeoutRef.current && clearInterval(timeoutRef.current);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="w-full h-[140px] md:h-[200px] lg:h-[300px] bg-backgroundStrip1 dark:bg-backgroundStrip1Dark bg-no-repeat bg-cover flex justify-start items-center overflow-hidden">
-      <img className={`min-w-[300%] max-h-[60%]` + (logoScrollMode === 0 ? " ml-0" : " ml-[-173%] transition-all duration-[20000ms] ease-linear")} src={isDarkMode ? techLight : techDark} alt={"technology slider"}></img>
+      <img
+        className={`min-w-[300%] max-h-[60%] transition-transform duration-[20000ms] ease-linear ${
+          logoScrollMode === 0 ? "translate-x-0" : "-translate-x-[66.66%]"
+        }`}
+        src={isDarkMode ? techLight : techDark}
+        alt="technology slider"
+      />
     </div>
   );
 };
 
 const ClientReviews = () => {
-  const [selectedClient, selectClient] = useState(0);
+  const [selectedClient, setSelectedClient] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const selectNextClient = () => selectClient((selectedClient + 1) % clientData.length);
-  const selectPrevClient = () => selectClient(selectedClient - 1 === -1 ? clientData.length - 1 : selectedClient - 1);
+  const selectNextClient = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setSelectedClient((selectedClient + 1) % clientData.length);
+        setIsAnimating(false);
+      }, 300); // Animation duration
+    }
+  };
+
+  const selectPrevClient = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setSelectedClient(selectedClient - 1 === -1 ? clientData.length - 1 : selectedClient - 1);
+        setIsAnimating(false);
+      }, 300);
+    }
+  };
 
   return (
-    <div className=" h-[328px] md:h-[528px]">
-      <div className="w-full flex flex-col items-center absolute">
-        <div
-          className={`absolute w-4/5 min-w-80
-        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] reviews-gradient opacity-70 max-w-[1500px]`}
-        ></div>
-        <React.Fragment>
-          {clientData.map((client, index) => (
-            <div
-              className={`absolute w-4/5 min-w-80 flex flex-col items-center max-w-[1500px]
-        mt-16 mb-16 rounded-2xl h-[200px] md:h-[400px] ease-out transition-opacity duration-500 ${index !== selectedClient ? "opacity-0" : "opacity-100"}`}
-            >
-              <div className="absolute bottom-0 right-0 mb-4 md:mb-8 mr-4 md:mr-8 flex">
-                <img src={BackSelect} className="mr-2 w-[30px] md:w-auto cursor-pointer" onClick={selectPrevClient} alt={"<-"} />
-                <img src={FrontSelect} className="w-[30px] md:w-auto cursor-pointer" onClick={selectNextClient} alt={"->"} />
+    <div className="w-full py-20 bg-gradient-to-r from-[#F4F7FF] to-[#E4E9F2]">
+      {/* Section Title */}
+      <div className="flex flex-col items-center mb-12">
+        <div className="text-5xl pt-5 font-semibold text-[#002B65] dark:text-white">What Our Clients Say</div>
+        <div className="w-[22%] h-1 bg-[#DEA719] mt-2 mb-6"></div>
+      </div>
+
+      {/* Reviews Slider */}
+      <div className="relative flex justify-center">
+        <div className="max-w-5xl w-full bg-[#0081db] dark:bg-dark-card rounded-xl p-12 shadow-lg flex items-center">
+          
+          {/* Client Image - Left Side */}
+          <div className="w-56 h-56 rounded-full mb-8 overflow-hidden flex-shrink-0">
+            <img 
+              src={clientData[selectedClient].clientImg} 
+              alt="Client" 
+              className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`} 
+            />
+          </div>
+
+          {/* Client Info - Right Side */}
+          <div className="ml-6 flex flex-col flex-grow">
+            
+            <div className={`text-base text-white transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              {clientData[selectedClient].clientReview}
+            </div>
+            <div className={`text-lg font-semibold my-1 text-[#DEA719] transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              {clientData[selectedClient].clientName}
+            </div>
+            
+            <div className="flex justify-between items-center">
+          {/* Client Logo */}
+          <div className={`w-28 h-12 p-2 border-2 border-[#DEA719] rounded-lg overflow-hidden flex items-center justify-center transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+              <img src={clientData[selectedClient].clientLogo} className="w-full h-full object-contain" alt="Client Logo" />
+            </div>
+
+            {/* Navigation Arrows - Right Side Below Comments */}
+            <div className="flex justify-end mt-4">
+              <div 
+                className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
+                onClick={selectPrevClient}
+              >
+                <img src={BackSelect} className="w-14 h-14 text-white p-2" alt="Previous" />
               </div>
-              <div className="font-syne text-xl md:text-3xl text-[#FF9900] mt-2 md:mt-10 mb-2 md:mb-6">Reviews from Our Clients</div>
-              <div className="flex w-11/12">
-                <div className="min-w-[120px] h-[90px] md:min-w-[300px] md:h-[220px] border-4 border-solid border-black rounded-2xl overflow-hidden mr-2 md:mr-14 md:mt-2 md:mb-4">
-                  <img src={client.clientImg} className="w-full h-full object-contain bg-gray-200" alt="Client Profile" />
-                </div>
-                <div className="text-white">
-                  <div className="text-xs md:text-base max-h-16 md:max-h-[170px] overflow-auto overscroll-contain">{client.clientReview}</div>
-                  <div className="mt-2 font-bold italic md:text-2xl">{client.clientName}</div>
-                  <div className="flex justify-between">
-                    <div className="w-[120px] md:w-[200px] p-2 border-black border-2 rounded-md overflow-hidden md:mt-2 md:mb-4">
-                      <img src={client.clientLogo} className="w-full" alt="Client Logo" />
-                    </div>
-                  </div>
-                </div>
+              <div 
+                className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
+                onClick={selectNextClient}
+              >
+                <img src={FrontSelect} className="w-14 h-14 text-white p-2" alt="Next" />
               </div>
             </div>
-          ))}
-        </React.Fragment>
+          </div>
+            </div>
+
+            
+          
+        </div>
       </div>
     </div>
   );
@@ -207,11 +256,53 @@ const CoreTeam = () => {
   );
 };
 
+const AnimatedNumber = ({ target, duration = 1000 }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          let start = 0;
+          const increment = target / (duration / 16);
+
+          const timer = setInterval(() => {
+            start += increment;
+            if (start >= target) {
+              setCount(target);
+              clearInterval(timer);
+            } else {
+              setCount(Math.ceil(start));
+            }
+          }, 16);
+
+          return () => clearInterval(timer);
+        }
+      },
+      { threshold: 0.5 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, [target, duration]);
+
+  return <span ref={ref}>{count}+</span>;
+};
+
 const Home = () => {
   const screenSize = useScreenSize();
   const isMobileScreen = screenSize <= SCREEN_SIZES.md;
   const location = useLocation();
   const [isDarkMode] = useContext(DarkModeContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const hash = location.hash;
@@ -228,31 +319,92 @@ const Home = () => {
 
   const videoSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&controls=0&rel=0&modestbranding=1&loop=1&playlist=${videoId}&mute=1`;
 
-  // Handle initial click to start video with sound
   const handleVideoClick = () => {
     if (playerRef.current && playerRef.current.contentWindow) {
       playerRef.current.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
     }
+  };
+  const handleContactClick = () => {
+    navigate('/#contact');
   };
 
   return (
     <div className="home w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden flex justify-center relative z-0">
       <div className=" max-w-[2000px]">
         <Background page="home" />
-        <div className="w-full h-[1044px] flex items-center justify-center" onClick={handleVideoClick}>
+        <div className="w-full h-[1044px] flex items-center justify-center relative" onClick={handleVideoClick}>
+          <div className="w-full h-full overflow-hidden">
           <iframe
-            ref={playerRef}
-            width="100%"
-            height="100%"
-            src={videoSrc}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            style={{ pointerEvents: "none" }} // Disable pointer events to prevent pause clicks
-          ></iframe>
+          ref={playerRef}
+          width="100%"
+          height="100%"
+          src={videoSrc}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          style={{
+            transform: 'scale(1.1)',
+            pointerEvents: 'none',
+            position: 'absolute',
+            top: '0',
+            left: '0',
+            objectFit: 'cover',
+          
+          
+          }}
+        ></iframe>
+        <div className="absolute bottom-[-60px] left-0 w-full h-[62px] bg-[#B4EAFF] dark:bg-[#110828]"></div>
+          </div>
+          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
+            <div className="font-syne text-4xl md:text-8xl text-white font-bold mb-4 fade-in">You Dream,<br /> We Develop</div>
+           
+          </div>
+          <div className="relative right-[45%] top-[13%]">
+              <CustomButton
+                text="Contact Us"
+                onClick={handleContactClick}
+                className=""
+              />
+            </div>
+          <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-8 z-20 w-full max-w-screen-xl">
+          <div className="flex justify-between w-full gap-8">
+            {/* Happy Clients Card */}
+            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
+                <AnimatedNumber target={50} />
+              </div>
+              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
+                Thousands of clients trust
+              </div>
+            </div>
+
+            {/* Games Card */}
+            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
+                <AnimatedNumber target={100} />
+              </div>
+              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
+                We’ve built over 100 games across platforms
+              </div>
+            </div>
+
+            {/* Experiences Card */}
+            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
+                <AnimatedNumber target={35} />
+              </div>
+              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
+                Crafting immersive and interactive experiences
+              </div>
+            </div>
+          </div>
         </div>
-        {isMobileScreen ? (
+       </div>
+
+
+        {/* {isMobileScreen ? (
           <div className="h-[500px] flex flex-col justify-center align-middle px-10">
             <div className="font-syne text-5xl text-[#002B65] dark:text-white mt-10 mb-5 leading-tight text-center">Welcome to Gamebole</div>
             <div className="text-md md:text-lg text-[#002B65] dark:text-white font-raleway leading-snug font-normal"> we capture the core essence and envision a spectrum of brilliant possibilities for implementation. Our extensive collaboration with industry leaders and an inspired approach pave the way for creating exceptional artworks that transcend the ordinary, defining our commitment to excellence in every project.</div>
@@ -267,39 +419,60 @@ const Home = () => {
               <img className=" max-h-[600px] max-w-[1200px]" src={Adepti} alt="Man" />
             </div>
           </div>
-        )}
-        <div className="flex justify-center text-xl font-raleway text-[#DEA719] font-extrabold">OUR COLLECTION</div>
+        )} */}
+        <div className="flex justify-center text-xl font-raleway text-[#DEA719] dark:text-[#DEA719] font-extrabold mt-16">OUR COLLECTION</div>
         <div className="flex justify-center font-syne text-4xl lg:text-6xl text-[#002B65] dark:text-white mt-2 mb-6">Gamebole Offers</div>
-        <div className="flex justify-center flex-wrap mb-16 text-[#002B65] dark:text-white">
-          <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3">
-              <img className="max-w-full max-h-full object-contain rounded-2xl" src={isDarkMode ? gdLight : gdDark} alt="Descriptive Text" />
-            </div>
-            <div className="flex justify-center text-xl md:text-2xl font-bold">Game Development</div>
-            {/* Android/iOS (Unity) & Web (Playcanvas) Games */}
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? metaLight : metaDark} alt="Descriptive Text" />
-            </div>
-            <div className="flex justify-center text-xl md:text-2xl font-bold">Metaverses</div>
-            {/* 3D multiplayer worlds with free-roaming interactions */}
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3">
-              <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? arLight : arDark} alt="Descriptive Text" />
-            </div>
-            <div className="flex justify-center text-xl md:text-2xl font-bold">AR Integration</div>
-            {/* Product visualization with 3D models and AR viewers */}
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="rounded-2xl w-60 md:w-80 h-60 md:h-80 card-gradient m-3">
-              <img className="max-w-full max-h-full object-contain rounded-2xl" src={isDarkMode ? configLight : configDark} alt="Descriptive Text" />
-            </div>
-            <div className="flex justify-center text-xl md:text-2xl font-bold">Interactive Experiences</div>
-            {/* Configurations, Simulations & Visualizations */}
-             
-          </div>
+
+        <div className="flex justify-center flex-wrap gap-8 mb-16 text-[#002B65] dark:text-white">
+       
+  <div className="flex flex-col items-start bg-gradient-to-r from-[#00A9E0] to-[#005A86] blog-card-gradient dark:border dark:border-white rounded-xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+    <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-2xl"></div>
+    <div className="rounded-2xl overflow-hidden mb-4 z-10">
+      <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? gdLight : gdDark} alt="Game Development" />
+    </div>
+    <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Game Development</div>
+    <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+      Android/iOS (Unity) & Web (Playcanvas) games designed to engage and entertain players on multiple platforms.
+    </div>
+  </div>
+
+
+
+  <div className="flex flex-col items-start bg-gradient-to-r from-[#7B2E8C] to-[#580A52] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? metaLight : metaDark} alt="Metaverses" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Metaverses</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    3D multiplayer worlds with free-roaming interactions where users can connect and explore limitless possibilities.
+  </div>
+</div>
+
+
+<div className="flex flex-col items-start bg-gradient-to-r from-[#FFC42E] to-[#FF4F00] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? arLight : arDark} alt="AR Integration" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">AR Integration</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    Product visualization with 3D models and AR viewers to help showcase products in a real-world context.
+  </div>
+</div>
+
+
+<div className="flex flex-col items-start bg-gradient-to-r from-[#E040FF] to-[#9B1DFF] blog-card-gradient dark:border dark:border-white rounded-3xl p-6 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl w-64 md:w-80 lg:w-96 relative">
+  <div className="absolute inset-0 bg-[#EAF9FF] dark:bg-transparent rounded-xl"></div>
+  <div className="rounded-2xl overflow-hidden mb-4 z-10">
+    <img className="max-w-full max-h-full object-cover rounded-2xl" src={isDarkMode ? configLight : configDark} alt="Interactive Experiences" />
+  </div>
+  <div className="text-[#002B65] dark:text-white text-xl md:text-2xl font-bold mb-2 z-10">Interactive Experiences</div>
+  <div className="text-[#002B65] dark:text-white font-raleway text-sm md:text-base z-10">
+    Configurations, simulations, and visualizations designed to create engaging and educational user interactions.
+  </div>
+</div>
+
         </div>
         <TechIconScroller />
         <ClientReviews />
