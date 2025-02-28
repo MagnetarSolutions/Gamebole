@@ -1,13 +1,16 @@
 import React, { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 import Service1Content1Img1 from "resources/services/2/3.png";
 import Service1Content1Img2 from "resources/services/2/1.png";
 import Service1Content1Img3 from "resources/services/2/2.png";
 import mainimg from "resources/services/2/main.png";
 import background from "resources/services/2/background.png";
 import backgroundDark from "resources/services/4/backgroundDark.png";
-
-import Cocos from "resources/services/1/1-2.png";
-import playcanvas from "resources/services/1/1-1.png";
+import GameCardimg from "resources/images/GameCardimg.png";
+import playcanvas from "resources/games/logo 2.png";
 import CustomButton from "components/CustomButton";
 import Service3Content1Btn1 from "resources/services/2/1-b1.svg";
 import Service3Content1Btn1Dark from "resources/services/2/1-b1-dark.svg";
@@ -15,13 +18,11 @@ import Service3Content1Btn1Dark from "resources/services/2/1-b1-dark.svg";
 
 const gamesData = [
   {
-    title: "H5 Games",
-    image1: playcanvas,
-    description1:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
-    image2: Cocos,
-    description2:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
+    Cardimg: GameCardimg,
+        title: "Bus Parking 3D",  
+        description:
+          "Embark on a thrilling challenge with Gamebole's 'Bus Parking 3D' on PlayCanvas. Maneuver your bus through intricate levels, collecting coins while mastering the art of precision parking within the allotted time. This simple yet engaging game combines skill and strategy for an immersive experience, offering players a chance to showcase their driving prowess in a visually captivating environmen",
+        Playimg: playcanvas,
       button: {
         type: "button",
         text: "Experience now",
@@ -31,13 +32,11 @@ const gamesData = [
       },
   },
   {
-    title: "H5 Games",
-    image1: playcanvas,
-    description1:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
-    image2: Cocos,
-    description2:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
+    Cardimg: GameCardimg,
+        title: "Bus Parking 3D",  
+        description:
+          "Embark on a thrilling challenge with Gamebole's 'Bus Parking 3D' on PlayCanvas. Maneuver your bus through intricate levels, collecting coins while mastering the art of precision parking within the allotted time. This simple yet engaging game combines skill and strategy for an immersive experience, offering players a chance to showcase their driving prowess in a visually captivating environmen",
+        Playimg: playcanvas,
       button: {
         type: "button",
         text: "Experience now",
@@ -47,13 +46,25 @@ const gamesData = [
       },
   },
   {
-    title: "H5 Games",
-    image1: playcanvas,
-    description1:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
-    image2: Cocos,
-    description2:
-      "Gamebole excels in H5 games, developing top-tier PlayCanvas experiences that redefine immersive gameplay and visual sophistication.",
+    Cardimg: GameCardimg,
+        title: "Bus Parking 3D",  
+        description:
+          "Embark on a thrilling challenge with Gamebole's 'Bus Parking 3D' on PlayCanvas. Maneuver your bus through intricate levels, collecting coins while mastering the art of precision parking within the allotted time. This simple yet engaging game combines skill and strategy for an immersive experience, offering players a chance to showcase their driving prowess in a visually captivating environmen",
+        Playimg: playcanvas,
+      button: {
+        type: "button",
+        text: "Experience now",
+        src: Service3Content1Btn1,
+        srcDark: Service3Content1Btn1Dark,
+        link: "/roblox-games",
+      },
+  },
+  {
+    Cardimg: GameCardimg,
+        title: "Bus Parking 3D",  
+        description:
+          "Embark on a thrilling challenge with Gamebole's 'Bus Parking 3D' on PlayCanvas. Maneuver your bus through intricate levels, collecting coins while mastering the art of precision parking within the allotted time. This simple yet engaging game combines skill and strategy for an immersive experience, offering players a chance to showcase their driving prowess in a visually captivating environmen",
+        Playimg: playcanvas,
       button: {
         type: "button",
         text: "Experience now",
@@ -67,19 +78,14 @@ const gamesData = [
 const GameCard = ({ game }) => {
   const { text, link, src, srcDark } = game.button;
   return (
-    <div className="overflow-hidden p-4 w-full max-w-xs md:max-w-sm lg:max-w-md mt-8 service-content-gradient-B dark:bg-dark-card">
-      <h3 className="w-full text-center font-syne font-semibold text-2xl md:text-3xl mb-8 transition-color duration-1000 dark:text-white">
-        {game.title}
-      </h3>
-      <img src={game.image1} alt={game.title} className="max-w-full h-auto mb-4" />
-      <p className="w-full mb-3 text-start font-raleway text-base md:text-lg leading-tight transition-color duration-1000 dark:text-white">
-        {game.description1}
+    <div className="overflow-hidden p-4 w-[100%] mt-2 rounded-md service-content-gradient-B dark:bg-black">
+      <img src={GameCardimg} alt={game.title} className="w-full h-56 object-cover rounded-md" />
+      <h3 className="text-2xl font-syne mt-3 text-[#FF9900]">{game.title}</h3>
+      <p className="text-black text-sm mt-2 dark:!text-white">
+        {game.description}
       </p>
-      <img src={game.image2} alt={game.title} className="max-w-full h-auto mb-4" />
-      <p className="w-full mb-3 text-start font-raleway text-base md:text-lg leading-tight transition-color duration-1000 dark:text-white">
-        {game.description2}
-      </p>
-      <div className="mt-4 flex justify-center relative">
+      <span className=""><p className="inline pr-3 text-black dark:!text-white">Availible on:</p><img src={playcanvas} alt="" className="inline" /></span>
+      <div className="mt-3 flex justify-center">
         <a href={link} target="_blank" rel="noopener noreferrer">
           <CustomButton
             text={text}
@@ -98,12 +104,12 @@ const Servicexdcard = () => {
 
   return (
     <div
-      className="flex flex-col items-center justify-center p-10 relative transition-all duration-500
+      className=" relative flex flex-col items-center justify-center pb-40 pt-20 px-3 transition-all duration-500 dark:!bg-black
                bg-[url('resources/services/2/background.png')]
                dark:bg-[url('resources/services/4/backgroundDark.png')]
-               bg-cover bg-center"
+               bg-cover bg-center "
     >
-      <img src={mainimg} alt="" className="absolute top-10 w-60 right-32 md:w-48 md:right-24 lg:w-60 lg:right-32" />
+      <img src={mainimg} alt="" className="absolute top-20 w-60 right-32 md:w-48 md:right-24 lg:w-60 lg:right-32" />
 
       <h2 className="text-3xl font-bold text-white md:text-2xl lg:text-3xl">XR</h2>
 
@@ -138,11 +144,59 @@ const Servicexdcard = () => {
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-center gap-6 p-8">
-        {gamesData.map((game, index) => (
-          <GameCard key={index} game={game} />
-        ))}
-      </div>
+      <div className="relative w-full mt-10">
+              <Swiper
+                slidesPerView={4} 
+                spaceBetween={10}
+                slidesPerGroup={1} 
+                loop={true} 
+                navigation
+                modules={[Navigation]}
+                className="w-full"
+      
+              >
+                {gamesData.map((game, index) => (
+                  <SwiperSlide key={index}>
+                    <div className="flex justify-center relative">
+                      <GameCard game={game} />
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <style>
+        {`
+          .swiper-button-prev, .swiper-button-next {
+            width: 50px; 
+            height: 50px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white !important;
+            top: 57% !important; 
+            transform: translateY(-50%); 
+          }
+      
+          .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 20px;
+            color: white; 
+          }
+      
+          .swiper-button-prev {
+            left: 10px !important;
+          }
+          
+          .swiper-button-next {
+            right: 10px !important;
+          }
+        `}
+      </style>
+      
+      
+      
+             
+            </div>
     </div>
   );
 };

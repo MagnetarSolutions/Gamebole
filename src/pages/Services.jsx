@@ -135,15 +135,13 @@ const Services = () => {
           <div className="w-1/3">
             <GameCard gameCardData={gamesData[0]} />
           </div>
-          <div className="w-2/3">
-            <GameCard gameCardData={gamesData[1]} />
-          </div>
+         s
         </div>
         <div className="flex w-[900px]">
           <div className="w-2/3">
             <GameCard gameCardData={gamesData[2]} />
           </div>
-          <div className="w-1/3">
+          <div className="w-1/3 ">
             <GameCard gameCardData={gamesData[3]} />
           </div>
         </div>
