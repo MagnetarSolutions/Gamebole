@@ -143,84 +143,87 @@ const ClientReviews = () => {
 
   return (
     <div className="w-full py-20 bg-gradient-to-r from-[#F4F7FF] to-[#E4E9F2]">
-      {/* Section Title */}
-      <div className="flex flex-col items-center mb-12">
-        <div className="text-5xl pt-5 font-semibold text-[#002B65] dark:text-white">What Our Clients Say</div>
-        <div className="w-[22%] h-1 bg-[#DEA719] mt-2 mb-6"></div>
+    {/* Section Title */}
+    <div className="flex flex-col items-center mb-12 px-4">
+      <div className="text-3xl sm:text-4xl md:text-5xl pt-5 font-semibold text-[#002B65] dark:text-white text-center">
+        What Our Clients Say
       </div>
-
-      {/* Reviews Slider */}
-      <div className="relative flex justify-center">
-        <div className="max-w-5xl w-full bg-[#0081db] dark:bg-dark-card rounded-xl p-12 shadow-lg flex items-center">
-          
-          {/* Client Image - Left Side */}
-          <div className="w-56 h-56 rounded-full mb-8 overflow-hidden flex-shrink-0">
-            <img 
-              src={clientData[selectedClient].clientImg} 
-              alt="Client" 
-              className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`} 
-            />
+      <div className="w-2/3 sm:w-[40%] md:w-[22%] h-1 bg-[#DEA719] mt-2 mb-6"></div>
+    </div>
+  
+    {/* Reviews Slider */}
+    <div className="relative flex justify-center px-4">
+      <div className="w-full max-w-5xl bg-[#0081db] dark:bg-dark-card rounded-xl p-6 sm:p-8 md:p-12 shadow-lg flex flex-col md:flex-row items-center gap-6">
+        
+        {/* Client Image - Left Side */}
+        <div className="w-32 h-32 sm:w-16 sm:h-16 md:w-56 md:h-56 rounded-full md:mb-0 overflow-hidden flex-shrink-0">
+          <img 
+            src={clientData[selectedClient].clientImg} 
+            alt="Client" 
+            className={`w-full h-full object-cover transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`} 
+          />
+        </div>
+  
+        {/* Client Info - Right Side */}
+        <div className="flex flex-col flex-grow">
+          <div className={`text-base sm:text-sm md:text-lg font-semibold mb-1 text-[#DEA719] text-center sm:text-left md:text-left transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+            {clientData[selectedClient].clientName}
           </div>
-
-          {/* Client Info - Right Side */}
-          <div className="ml-6 flex flex-col flex-grow">
-            
-            <div className={`text-base text-white transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-              {clientData[selectedClient].clientReview}
-            </div>
-            <div className={`text-lg font-semibold my-1 text-[#DEA719] transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
-              {clientData[selectedClient].clientName}
-            </div>
-            
-            <div className="flex justify-between items-center">
-          {/* Client Logo */}
-          <div className={`w-28 h-12 p-2 border-2 border-[#DEA719] rounded-lg overflow-hidden flex items-center justify-center transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+  
+          <div className={`text-sm sm:text-xs md:text-base text-white transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
+            {clientData[selectedClient].clientReview}
+          </div>
+  
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4">
+            {/* Client Logo */}
+            <div className={`w-28 h-12 p-2 border-2 border-[#DEA719] rounded-lg overflow-hidden flex items-center justify-center transition-opacity duration-500 ease-in-out ${isAnimating ? "opacity-0" : "opacity-100"}`}>
               <img src={clientData[selectedClient].clientLogo} className="w-full h-full object-contain" alt="Client Logo" />
             </div>
-
-            {/* Navigation Arrows - Right Side Below Comments */}
-            <div className="flex justify-end mt-4">
+  
+            {/* Navigation Arrows */}
+            <div className="flex justify-center sm:justify-end gap-4">
               <div 
                 className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
                 onClick={selectPrevClient}
               >
-                <img src={BackSelect} className="w-14 h-14 text-white p-2" alt="Previous" />
+                <img src={BackSelect} className="w-10 h-10 sm:w-12 sm:h-12 text-white p-2" alt="Previous" />
               </div>
               <div 
                 className="cursor-pointer transition-transform duration-300 ease-in-out hover:scale-110 active:scale-90" 
                 onClick={selectNextClient}
               >
-                <img src={FrontSelect} className="w-14 h-14 text-white p-2" alt="Next" />
+                <img src={FrontSelect} className="w-10 h-10 sm:w-12 sm:h-12 text-white p-2" alt="Next" />
               </div>
             </div>
           </div>
-            </div>
-
-            
-          
         </div>
       </div>
     </div>
+  </div>
+  
+
+
   );
 };
+
 
 const IconGroup = ({ links, height = 38 }) => {
   return (
     <div className="w-full flex justify-center">
-      <div className={`w-[152px] h-[38px] flex justify-center gap-[10%]`}>
+      <div className={`w-[152px] h-[38px] flex justify-between gap-4 sm:gap-4`}>
         {links[0] && (
           <a href={`https://www.linkedin.com/in/${links[0]}`} target="_blank" rel="noopener noreferrer">
-            <LinkedinLogo className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
+            <LinkedinLogo className={`logo-gradient w-[30px] h-[30px] sm:w-[38px] sm:h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
           </a>
         )}
         {links[1] && (
           <a href={`https://www.facebook.com/${links[1]}`} target="_blank" rel="noopener noreferrer">
-            <FacebookLogo className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
+            <FacebookLogo className={`logo-gradient w-[30px] h-[30px] sm:w-[38px] sm:h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
           </a>
         )}
         {links[2] && (
           <a href={`https://x.com/${links[2]}`} target="_blank" rel="noopener noreferrer">
-            <TwitterLogo className={`logo-gradient w-[38px] h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
+            <TwitterLogo className={`logo-gradient w-[30px] h-[30px] sm:w-[38px] sm:h-[38px] cursor-pointer rounded-lg stroke-white hover:stroke-black transition-all duration-300`} />
           </a>
         )}
       </div>
@@ -231,11 +234,11 @@ const IconGroup = ({ links, height = 38 }) => {
 const CoreTeamMember = ({ profile, name, role, links }) => {
   return (
     <div className="flex flex-col justify-center mx-8 mb-8 items-center">
-      <div className="w-44 h-44 bg-profile bg-no-repeat bg-contain flex justify-center items-center">
-        <img src={profile} className="w-40 h-40 rounded-full object-cover" alt={"profile"}></img>
+      <div className="w-40 h-40 sm:w-44 sm:h-44 bg-profile bg-no-repeat bg-contain flex justify-center items-center">
+        <img src={profile} className="w-32 h-32 sm:w-40 sm:h-40 rounded-full object-cover" alt={"profile"}></img>
       </div>
-      <div className="text-white font-syne text-4xl font-bold flex text-center">{name}</div>
-      <div className="text-white font-raleway text-lg text-center mb-4">{role}</div>
+      <div className="text-white font-syne text-xl sm:text-2xl md:text-4xl font-bold text-center">{name}</div>
+      <div className="text-white font-raleway text-sm sm:text-base text-center mb-4">{role}</div>
       <IconGroup links={links} />
     </div>
   );
@@ -332,76 +335,109 @@ const Home = () => {
     <div className="home w-full bg-[#B4EAFF] dark:bg-[#110828] transition-color overflow-hidden flex justify-center relative z-0">
       <div className=" max-w-[2000px]">
         <Background page="home" />
-        <div className="w-full h-[1044px] flex items-center justify-center relative" onClick={handleVideoClick}>
-          <div className="w-full h-full overflow-hidden">
-          <iframe
-          ref={playerRef}
-          width="100%"
-          height="100%"
-          src={videoSrc}
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          style={{
-            transform: 'scale(1.1)',
-            pointerEvents: 'none',
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            objectFit: 'cover',
-          
-          
-          }}
-        ></iframe>
-        <div className="absolute bottom-[-60px] left-0 w-full h-[62px] bg-[#B4EAFF] dark:bg-[#110828]"></div>
-          </div>
-          <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20">
-            <div className="font-syne text-4xl md:text-8xl text-white font-bold mb-4 fade-in">You Dream,<br /> We Develop</div>
-           
-          </div>
-          <div className="relative right-[45%] top-[13%]">
-              <CustomButton
-                text="Contact Us"
-                onClick={handleContactClick}
-                className=""
-              />
-            </div>
-          <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-8 z-20 w-full max-w-screen-xl">
-          <div className="flex justify-between w-full gap-8">
-            {/* Happy Clients Card */}
-            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
-              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
-                <AnimatedNumber target={50} />
-              </div>
-              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
-                Thousands of clients trust
-              </div>
-            </div>
+        <div className="w-full h-[1044px] flex items-center justify-center relative overflow-hidden" onClick={handleVideoClick}>
+  <div className="w-full h-full overflow-hidden">
+    <iframe
+      ref={playerRef}
+      width="100%"
+      height="100%"
+      src={videoSrc}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="responsive-video"
+    ></iframe>
+    <div className="absolute bottom-[-1px] left-0 w-full h-[110px] bg-[#B4EAFF] dark:bg-[#110828]"></div>
+  </div>
 
-            {/* Games Card */}
-            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
-              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
-                <AnimatedNumber target={100} />
-              </div>
-              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
-                We’ve built over 100 games across platforms
-              </div>
-            </div>
+  <div className="absolute top-0 left-0 w-full h-full bg-black opacity-10 z-0"></div>
 
-            {/* Experiences Card */}
-            <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
-              <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold">
-                <AnimatedNumber target={35} />
-              </div>
-              <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">
-                Crafting immersive and interactive experiences
-              </div>
-            </div>
-          </div>
-        </div>
-       </div>
+  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center z-20 hero-text">
+    <div className="font-syne text-4xl md:text-8xl text-white font-bold mb-4 fade-in">You Dream,<br /> We Develop</div>
+  </div>
+
+  {/* Contact Us Button */}
+  <div className="contact-button">
+    <CustomButton
+      text="Contact Us"
+      onClick={handleContactClick}
+    />
+  </div>
+
+  {/* Cards */}
+  <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex gap-8 z-20 w-full max-w-screen-xl cards">
+    <div className="flex flex-col md:flex-row justify-between w-full gap-4 md:gap-8">
+
+      {/* Card 1 */}
+      <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+        <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold"><AnimatedNumber target={50} /></div>
+        <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">Thousands of clients trust</div>
+      </div>
+
+      {/* Card 2 */}
+      <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+        <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-bold"><AnimatedNumber target={100} /></div>
+        <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">We’ve built over 100 games across platforms</div>
+      </div>
+
+      {/* Card 3 */}
+      <div className="bg-[#002B65] bg-opacity-20 backdrop-blur-lg rounded-md flex items-center gap-4 p-4 shadow-xl flex-1">
+        <div className="loco-text-heading-sm min-w-[30%] shrink-0 text-center text-white font-syne text-4xl md:text-5xl font-boldr"><AnimatedNumber target={35} /></div>
+        <div className="loco-text-body max-w-xs text-white font-raleway text-sm md:text-base">Crafting immersive and interactive experiences</div>
+      </div>
+    </div>
+  </div>
+
+  <style jsx>{`
+    .responsive-video {
+      position: absolute;
+      top: -50px;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .contact-button {
+      position: relative;
+      right: 45%;
+      top: 13%;
+      z-index: 30;
+    }
+
+    @media (max-width: 640px) {
+  .responsive-video {
+    transform: scale(5.1); 
+    top: 200px;             
+    object-position: center center;
+    height: 100vh;        
+  }
+
+  .hero-text {
+    top: 23% !important;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .contact-button {
+    top: -10%;
+    left: -13%;
+    transform: translateX(-50%);
+  }
+
+  .cards{
+  width: 80%;
+  }
+}
+
+  `}</style>
+</div>
+
+
+
+
+
 
 
         {/* {isMobileScreen ? (
@@ -472,8 +508,8 @@ const Home = () => {
     Configurations, simulations, and visualizations designed to create engaging and educational user interactions.
   </div>
 </div>
+</div>
 
-        </div>
         <TechIconScroller />
         <ClientReviews />
         <CoreTeam />
